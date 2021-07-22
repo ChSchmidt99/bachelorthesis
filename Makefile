@@ -9,10 +9,6 @@ release:
 	latexmk -pdf thesis.tex -jobname=thesis-release
 	latexmk -c
 	make clean
-slides:
-	latexmk -pdf slides.tex -jobname=slides
-	latexmk -c
-	make clean
 .PHONY: all draft release
 
 clean:

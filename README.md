@@ -7,10 +7,9 @@
 ```bash
 make draft   # build a draft version with watermark
 make release # build the release version without watermark
-make slides  # bulid your presentation slides
 ```
 
-See [draft](thesis.pdf) and [release](thesis-release.pdf), and [slides](slides.pdf) for a preview.
+See [draft](thesis.pdf) and [release](thesis-release.pdf) for a preview.
 
 ## Template structure
 
