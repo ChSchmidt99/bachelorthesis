@@ -1,10 +1,5 @@
 \section{Introduction}
-\label{ch:intro}
+Ray tracing is foremost a rendering technique simulating how light travels through a scene and thus inherently producing very realistic images. Effects that need to be simulated explicitly in the contrasting approach of rasterization, such as shadows, reflections and refractions are achieved by default, albeit introducing a substantial computational cost. It is this simplicity paired with the high quality output, that made the method a staple in offline rendering where the relatively long rendering time can be tolerated. In real-time settings where the time to render single frames is limited, ray tracing is a rather poor fit and requires a number of optimizations to push its performance to a sufficient point. Only in recent years has that point been reached and surpassed far enough to open the technology up for a consumer market, especially by utilizing special-purpose hardware. A particularly noteworthy milestone in that regard is NVIDIA's Turing architecture\cite{nvidia2017turing}, which is built in a way that accelerates basic ray tracing operations while also facilitating other software technologies essential to the process, most importantly more advanced denoising techniques. However, the availability of such graphic cards is still limited, so software based solutions remain an interesting topic which this thesis tries to tackle. 
 
-\epigraph{That men do not learn very much from the lessons of history is the most important of all the lessons that history has to teach.}{Aldous Huxley}
-
-\subsection{History of \LaTeX}
-
-The first release of \LaTeX \cite{lamport1994latex} appeared in 1983 \cite{lamport2007writings}.
-
-\cleardoublepage
+% TODO: Add references to the corresponding sections 
+In particular, this thesis provides a self-contained overview over the basics of real-time ray tracing as well as some implementation details of an interactive CPU path tracer written from scratch, which might be useful as a starting point for further research and more optimizations. Furthermore, a closer look at bounding volume hierarchies is presented, and the approach of progressive hierarchical refinement\cite{nvidia2017turing} is introduced as a state-of-the-art algorithm to construct such acceleration structures. The integration of the aforementioned approach into an interactive path tracer is described and validated, as this was still an open question. Finally, two methods for optimizing hyperparameters related to the construction algorithm in real-time are introduced, evaluated and discussed. 
