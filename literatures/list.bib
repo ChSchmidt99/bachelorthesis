@@ -1,10 +1,74 @@
 @techreport{nvidia2017turing,
   title={NVIDIA Turing GPU Architecture},
-  number={WP-09183-001_v01}
+  number={WP-09183-001_v01},
   author={Nvidia},
-  year={2018}
-  type={White Paper}
-  url={https://images.nvidia.com/aem-dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf}
+  year={2018},
+  type={White Paper},
+  url={https://images.nvidia.com/aem-dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf},
+}
+
+@article{hendrich_parallel_2017,
+	title = {Parallel {BVH} {Construction} using {Progressive} {Hierarchical} {Refinement}},
+	volume = {36},
+	doi = {10.1111/cgf.13143},
+	abstract = {We propose a novel algorithm for construction of bounding volume hierarchies (BVHs) for multi-core CPU architectures. The algorithm constructs the BVH by a divisive top-down approach using a progressively refined cut of an existing auxiliary BVH. We propose a new strategy for refining the cut that significantly reduces the workload of individual steps of BVH construction. Additionally, we propose a new method for integrating spatial splits into the BVH construction algorithm. The auxiliary BVH is constructed using a very fast method such as LBVH based on Morton codes. We show that the method provides a very good trade-off between the build time and ray tracing performance. We evaluated the method within the Embree ray tracing framework and show that it compares favorably with the Embree BVH builders regarding build time while maintaining comparable ray tracing speed. © 2017 The Author(s) Computer Graphics Forum © 2017 The Eurographics Association and John Wiley \& Sons Ltd. Published by John Wiley \& Sons Ltd.},
+	journal = {Computer Graphics Forum},
+	author = {Hendrich, Jakub and Meister, Daniel and Bittner, Jiri},
+	month = may,
+	year = {2017},
+	pages = {487--494},
+}
+
+@inproceedings{appel1968,
+author = {Appel, Arthur},
+title = {Some Techniques for Shading Machine Renderings of Solids},
+year = {1968},
+isbn = {9781450378970},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1468075.1468082},
+doi = {10.1145/1468075.1468082},
+abstract = {Some applications of computer graphics require a vivid illusion of reality. These
+include the spatial organization of machine parts, conceptual architectural design,
+simulation of mechanisms, and industrial design. There has been moderate success in
+the automatic generation of wire frame, cardboard model, polyhedra, and quadric surface
+line drawings. The capability of the machine to generate vivid sterographic pictures
+has been demonstrated. There are, however considerable reasons for developing techniques
+by which line drawings of solids can be shaded, especially the enhancement of the
+sense of solidity and depth. Figures 1 and 2 illustrate the value of shading and shadow
+casting in spatial description. In the line drawing there is no clue as to the relative
+position of the flat plane and the sheet metal console. When shadows are rendered,
+it is clear that the plane is below and to the rear of the console, and the hollow
+nature of the sheet metal assembly is emphasized. Shading can specify the tone or
+color of a surface and the amount of light falling upon that surface from one or more
+light sources. Shadows when sharply defined tend to suggest another viewpoint and
+improves surface definition. When controlled, shading can also emphasize particular
+parts of the drawing. If techniques for the automatic determination of chiaroscuro
+with good resolution should prove to be competitive with line drawings, and this is
+a possibility, machine generated photographs might replace line drawings as the principal
+mode of graphical communication in engineering and architecture.},
+booktitle = {Proceedings of the April 30--May 2, 1968, Spring Joint Computer Conference},
+pages = {37–45},
+numpages = {9},
+location = {Atlantic City, New Jersey},
+series = {AFIPS '68 (Spring)}
+}
+
+@article{whitted_improved_1980,
+	title = {An improved illumination model for shaded display},
+	volume = {23},
+	issn = {0001-0782},
+	url = {https://doi.org/10.1145/358876.358882},
+	doi = {10.1145/358876.358882},
+	abstract = {To accurately render a two-dimensional image of a three-dimensional scene, global illumination information that affects the intensity of each pixel of the image must be known at the time the intensity is calculated. In a simplified form, this information is stored in a tree of “rays” extending from the viewer to the first surface encountered and from there to other surfaces and to the light sources. A visible surface algorithm creates this tree for each pixel of the display and passes it to the shader. The shader then traverses the tree to determine the intensity of the light received by the viewer. Consideration of all of these factors allows the shader to accurately simulate true reflection, shadows, and refraction, as well as the effects simulated by conventional shaders. Anti-aliasing is included as an integral part of the visibility calculations. Surfaces displayed include curved as well as polygonal surfaces.},
+	number = {6},
+	urldate = {2021-05-04},
+	journal = {Communications of the ACM},
+	author = {Whitted, Turner},
+	month = jun,
+	year = {1980},
+	keywords = {computer animation, computer graphics, raster displays, shading, visible surface algorithms},
+	pages = {343--349},
 }
 
 @article{chaitanya_interactive_2017,
@@ -145,18 +209,6 @@
 	month = jun,
 	year = {2012},
 	pages = {33--37},
-}
-
-@article{hendrich_parallel_2017,
-	title = {Parallel {BVH} {Construction} using {Progressive} {Hierarchical} {Refinement}},
-	volume = {36},
-	doi = {10.1111/cgf.13143},
-	abstract = {We propose a novel algorithm for construction of bounding volume hierarchies (BVHs) for multi-core CPU architectures. The algorithm constructs the BVH by a divisive top-down approach using a progressively refined cut of an existing auxiliary BVH. We propose a new strategy for refining the cut that significantly reduces the workload of individual steps of BVH construction. Additionally, we propose a new method for integrating spatial splits into the BVH construction algorithm. The auxiliary BVH is constructed using a very fast method such as LBVH based on Morton codes. We show that the method provides a very good trade-off between the build time and ray tracing performance. We evaluated the method within the Embree ray tracing framework and show that it compares favorably with the Embree BVH builders regarding build time while maintaining comparable ray tracing speed. © 2017 The Author(s) Computer Graphics Forum © 2017 The Eurographics Association and John Wiley \& Sons Ltd. Published by John Wiley \& Sons Ltd.},
-	journal = {Computer Graphics Forum},
-	author = {Hendrich, Jakub and Meister, Daniel and Bittner, Jiri},
-	month = may,
-	year = {2017},
-	pages = {487--494},
 }
 
 @article{wald_ray_2007,
@@ -349,21 +401,4 @@
 	year = {1984},
 	keywords = {Camera, Constructive solid geometry, Depth of field, Focus, Gloss, Motion blur, Penumbras, Ray tracing, Shadows, Translucency, Transparency},
 	pages = {137--145},
-}
-
-@article{whitted_improved_1980,
-	title = {An improved illumination model for shaded display},
-	volume = {23},
-	issn = {0001-0782},
-	url = {https://doi.org/10.1145/358876.358882},
-	doi = {10.1145/358876.358882},
-	abstract = {To accurately render a two-dimensional image of a three-dimensional scene, global illumination information that affects the intensity of each pixel of the image must be known at the time the intensity is calculated. In a simplified form, this information is stored in a tree of “rays” extending from the viewer to the first surface encountered and from there to other surfaces and to the light sources. A visible surface algorithm creates this tree for each pixel of the display and passes it to the shader. The shader then traverses the tree to determine the intensity of the light received by the viewer. Consideration of all of these factors allows the shader to accurately simulate true reflection, shadows, and refraction, as well as the effects simulated by conventional shaders. Anti-aliasing is included as an integral part of the visibility calculations. Surfaces displayed include curved as well as polygonal surfaces.},
-	number = {6},
-	urldate = {2021-05-04},
-	journal = {Communications of the ACM},
-	author = {Whitted, Turner},
-	month = jun,
-	year = {1980},
-	keywords = {computer animation, computer graphics, raster displays, shading, visible surface algorithms},
-	pages = {343--349},
 }

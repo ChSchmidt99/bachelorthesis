@@ -1,10 +1,11 @@
-\section{Interactive Path Tracing}
-\label{ch:pathtracing}
-
-\epigraph{That men do not learn very much from the lessons of history is the most important of all the lessons that history has to teach.}{Aldous Huxley}
-
-\subsection{History of \LaTeX}
-
-The first release of \LaTeX \cite{lamport1994latex} appeared in 1983 \cite{lamport2007writings}.
-
-\cleardoublepage
+\section{Path Tracing}
+\subsection{Algorithm}
+At the core of any ray tracing approach is the concept of a ray, usually in three-dimensional space. In this work the following representation is used.
+\[P(t)=O+td\]
+% TODO: Introduce math notation
+Where the origin $O$ is some point within the scene space and the direction $d$ is some vector along which the ray travels in a straight line. Points along this line can be described using the distance $t$, with $P(0)=O$ and $P(1)=O+d$. 
+% TODO: Add Ray tracing Figure
+As illustrated in figure 1, this concept can be used to construct images. Rays are cast into a scene, originating at some common eye point and intersecting each pixel in the image plane to find its corresponding color. The first ray casting algorithm using such a technique was proposed by Appel\cite{appel1968}, only considering primary intersections and shadow rays towards a light source to determine whether a point is illuminated or not. Whitted\cite{whitted_improved_1980} expanded on that approach by introducing an algorithm that, upon finding an object intersection, generates secondary rays influencing the final pixel color. In addition to the previously mentioned shadows, these secondary rays allow rendering of reflections and refractions, by recursively casting new rays in the reflection direction and blending all results. 
+A more common approach used today is a closely related concept called path tracing\cite{kajiya_rendering_1986}. Instead of evaluating a single ray per pixel, multiple samples with slight offsets and random scattering are used to more accurately simulate light transport through a scene and approximate the rendering equation also introduced by Kajiya. Path tracing is a global illumination solution and thus produces more realistic results, while also offering a simple way to implement diffuse reflections and inherently solving the problem of aliasing. 
+\subsection{Optimizations}
+The issue with path tracing is, that it requires many samples to produce plausible results as images without sufficient samples tend to suffer from high-frequency noise. 
