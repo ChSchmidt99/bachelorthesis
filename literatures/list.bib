@@ -71,6 +71,27 @@ series = {AFIPS '68 (Spring)}
 	pages = {343--349},
 }
 
+@inproceedings{keller2015path_tracing_revolution,
+author = {Keller, A. and Fascione, L. and Fajardo, M. and Georgiev, I. and Christensen, P. and Hanika, J. and Eisenacher, C. and Nichols, G.},
+title = {The Path Tracing Revolution in the Movie Industry},
+year = {2015},
+isbn = {9781450336345},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2776880.2792699},
+doi = {10.1145/2776880.2792699},
+abstract = {As path tracing allows for more realistic and faster lighting, an increasing number
+of movies are created the physically based way. With examples from recent movies,
+the architectures and novel workflows of the next generation of production renderers
+are introduced to a wide audience including technical directors, artists, and researchers.},
+booktitle = {ACM SIGGRAPH 2015 Courses},
+articleno = {24},
+numpages = {7},
+location = {Los Angeles, California},
+series = {SIGGRAPH '15}
+}
+
+
 @article{chaitanya_interactive_2017,
 	title = {Interactive {Reconstruction} of {Monte} {Carlo} {Image} {Sequences} using a {Recurrent} {Denoising} {Autoencoder}},
 	volume = {36},
@@ -135,6 +156,47 @@ series = {AFIPS '68 (Spring)}
 	pages = {12},
 }
 
+@article{cook_distributed_1984,
+	title = {Distributed ray tracing},
+	volume = {18},
+	issn = {0097-8930},
+	url = {https://doi.org/10.1145/964965.808590},
+	doi = {10.1145/964965.808590},
+	abstract = {Ray tracing is one of the most elegant techniques in computer graphics. Many phenomena that are difficult or impossible with other techniques are simple with ray tracing, including shadows, reflections, and refracted light. Ray directions, however, have been determined precisely, and this has limited the capabilities of ray tracing. By distributing the directions of the rays according to the analytic function they sample, ray tracing can incorporate fuzzy phenomena. This provides correct and easy solutions to some previously unsolved or partially solved problems, including motion blur, depth of field, penumbras, translucency, and fuzzy reflections. Motion blur and depth of field calculations can be integrated with the visible surface calculations, avoiding the problems found in previous methods.},
+	number = {3},
+	urldate = {2021-05-04},
+	journal = {ACM SIGGRAPH Computer Graphics},
+	author = {Cook, Robert L. and Porter, Thomas and Carpenter, Loren},
+	month = jan,
+	year = {1984},
+	keywords = {Camera, Constructive solid geometry, Depth of field, Focus, Gloss, Motion blur, Penumbras, Ray tracing, Shadows, Translucency, Transparency},
+	pages = {137--145},
+}
+
+@article{schied_spatiotemporal_2017,
+	title = {Spatiotemporal {Variance}-{Guided} {Filtering}: {Real}-{Time} {Reconstruction} for {Path}-{Traced} {Global} {Illumination}},
+	abstract = {We introduce a reconstruction algorithm that generates a temporally stable sequence of images from one path-per-pixel global illumination. To handle such noisy input, we use temporal accumulation to increase the e ective sample count and spatiotemporal luminance variance estimates to drive a hierarchical, image-space wavelet lter [Dammertz et al. 2010]. is hierarchy allows us to distinguish between noise and detail at multiple scales using local luminance variance.},
+	language = {en},
+	journal = {Los Angeles},
+	author = {Schied, Christoph and Kaplanyan, Anton and Wyman, Chris and Patney, Anjul and Chaitanya, Chakravarty R Alla and Burgess, John and Liu, Shiqiu and Dachsbacher, Carsten and Lefohn, Aaron and Salvi, Marco},
+	year = {2017},
+	pages = {12},
+}
+
+@inproceedings{mara17towards,
+    author = "Mara, Michael and McGuire, Morgan and Bitterli, Benedikt and Jarosz, Wojciech",
+    title = "An Efficient Denoising Algorithm for Global Illumination",
+    booktitle = "Proceedings of High Performance Graphics",
+    year = "2017",
+    month = jul,
+    publisher = "ACM",
+    address = "New York, NY, USA",
+    isbn = "978-1-4503-5101-0",
+    location = "Los Angeles, California, USA",
+    doi = "10/gfzndq",
+    abstract = "We propose a hybrid ray-tracing/rasterization strategy for real- time rendering enabled by a fast new denoising method. We factor global illumination into direct light at rasterized primary surfaces and two indirect lighting terms, each estimated with one path- traced sample per pixel. Our factorization enables efficient (biased) reconstruction by denoising light without blurring materials. We demonstrate denoising in under 10 ms per 1280×720 frame, compare results against the leading offline denoising methods, and include a supplement with source code, video, and data."
+}
+
 @article{schied_gradient_2018,
 	title = {Gradient {Estimation} for {Real}-time {Adaptive} {Temporal} {Filtering}},
 	volume = {1},
@@ -168,14 +230,37 @@ series = {AFIPS '68 (Spring)}
 	pages = {1--14},
 }
 
-@article{schied_spatiotemporal_2017,
-	title = {Spatiotemporal {Variance}-{Guided} {Filtering}: {Real}-{Time} {Reconstruction} for {Path}-{Traced} {Global} {Illumination}},
-	abstract = {We introduce a reconstruction algorithm that generates a temporally stable sequence of images from one path-per-pixel global illumination. To handle such noisy input, we use temporal accumulation to increase the e ective sample count and spatiotemporal luminance variance estimates to drive a hierarchical, image-space wavelet lter [Dammertz et al. 2010]. is hierarchy allows us to distinguish between noise and detail at multiple scales using local luminance variance.},
-	language = {en},
-	journal = {Los Angeles},
-	author = {Schied, Christoph and Kaplanyan, Anton and Wyman, Chris and Patney, Anjul and Chaitanya, Chakravarty R Alla and Burgess, John and Liu, Shiqiu and Dachsbacher, Carsten and Lefohn, Aaron and Salvi, Marco},
-	year = {2017},
-	pages = {12},
+@article{koskela2019bmfr,
+author = {Koskela, Matias and Immonen, Kalle and M\"{a}kitalo, Markku and Foi, Alessandro and Viitanen, Timo and J\"{a}\"{a}skel\"{a}inen, Pekka and Kultala, Heikki and Takala, Jarmo},
+title = {Blockwise Multi-Order Feature Regression for Real-Time Path-Tracing Reconstruction},
+year = {2019},
+issue_date = {November 2019},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {38},
+number = {5},
+issn = {0730-0301},
+url = {https://doi.org/10.1145/3269978},
+doi = {10.1145/3269978},
+abstract = {Path tracing produces realistic results including global illumination using a unified
+simple rendering pipeline. Reducing the amount of noise to imperceptible levels without
+post-processing requires thousands of samples per pixel (spp), while currently it
+is only possible to render extremely noisy 1 spp frames in real time with desktop
+GPUs. However, post-processing can utilize feature buffers, which contain noise-free
+auxiliary data available in the rendering pipeline. Previously, regression-based noise
+filtering methods have only been used in offline rendering due to their high computational
+cost. In this article we propose a novel regression-based reconstruction pipeline,
+called Blockwise Multi-Order Feature Regression (BMFR), tailored for path-traced 1
+spp inputs that runs in real time. The high speed is achieved with a fast implementation
+of augmented QR factorization and by using stochastic regularization to address rank-deficient
+feature data. The proposed algorithm is 1.8\texttimes{} faster than the previous state-of-the-art
+real-time path-tracing reconstruction method while producing better quality frame
+sequences.},
+journal = {ACM Trans. Graph.},
+month = jun,
+articleno = {138},
+numpages = {14},
+keywords = {reconstruction, Path tracing, regression, real-time}
 }
 
 @inproceedings{karras_fast_2013,
@@ -386,19 +471,3 @@ series = {AFIPS '68 (Spring)}
 	pages = {143--150},
 }
 
-@article{cook_distributed_1984,
-	title = {Distributed ray tracing},
-	volume = {18},
-	issn = {0097-8930},
-	url = {https://doi.org/10.1145/964965.808590},
-	doi = {10.1145/964965.808590},
-	abstract = {Ray tracing is one of the most elegant techniques in computer graphics. Many phenomena that are difficult or impossible with other techniques are simple with ray tracing, including shadows, reflections, and refracted light. Ray directions, however, have been determined precisely, and this has limited the capabilities of ray tracing. By distributing the directions of the rays according to the analytic function they sample, ray tracing can incorporate fuzzy phenomena. This provides correct and easy solutions to some previously unsolved or partially solved problems, including motion blur, depth of field, penumbras, translucency, and fuzzy reflections. Motion blur and depth of field calculations can be integrated with the visible surface calculations, avoiding the problems found in previous methods.},
-	number = {3},
-	urldate = {2021-05-04},
-	journal = {ACM SIGGRAPH Computer Graphics},
-	author = {Cook, Robert L. and Porter, Thomas and Carpenter, Loren},
-	month = jan,
-	year = {1984},
-	keywords = {Camera, Constructive solid geometry, Depth of field, Focus, Gloss, Motion blur, Penumbras, Ray tracing, Shadows, Translucency, Transparency},
-	pages = {137--145},
-}
