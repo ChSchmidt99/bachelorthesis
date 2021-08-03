@@ -25,4 +25,12 @@ Glassner\cite{glassner_space_1984} described one of the earliest approaches for 
 
 While space subdivision approaches have previously been regarded as the best acceleration data structure~\cite{havrand2000comparison}, object subdivision has since caught up and overtaken~\cite{vinkler2015comparison}, making it the most popular approach for path tracing. In addition, bounding volume hierarchies are very beneficial in dynamic scenes~\cite{wald_ray_2007}, as they can be re-fit efficiently on scene changes. Because of these advantages, only object subdivision approaches will be considered in the following sections of this thesis. 
 
-Object subdivision, mostly in the form a bounding volume hierarchy (BVH), was first mentioned by Clark~\cite{clark1976bvh} and also referenced by Whitted\cite{whitted_improved_1980} in his essential ray tracing paper. In contrast to space subdivision approaches, BVHs 
+% TODO: Introduce words like: primitive, ray tracing, path tracing, ray, AABB, OOB, Bounding sphere
+% TODO: Introduce tree and tree notation 
+Object subdivision, mostly in the form of a bounding volume hierarchy (BVH), was first mentioned by Clark~\cite{clark1976bvh} and also referenced by Whitted\cite{whitted_improved_1980} in his essential ray tracing paper. Each node of a BVH is spanned by a bounding volume and, depending on the branching factor $k$ of the tree, either contains $k$ children pointer or an arbitrary number of primitives in case of a leave node. 
+
+
+
+
+
+Axis-aligned bounding boxes are the most popular bounding volume, mainly because it has the best balance between intersection
