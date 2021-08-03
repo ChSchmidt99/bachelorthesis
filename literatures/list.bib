@@ -20,38 +20,38 @@
 }
 
 @inproceedings{appel1968,
-author = {Appel, Arthur},
-title = {Some Techniques for Shading Machine Renderings of Solids},
-year = {1968},
-isbn = {9781450378970},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/1468075.1468082},
-doi = {10.1145/1468075.1468082},
-abstract = {Some applications of computer graphics require a vivid illusion of reality. These
-include the spatial organization of machine parts, conceptual architectural design,
-simulation of mechanisms, and industrial design. There has been moderate success in
-the automatic generation of wire frame, cardboard model, polyhedra, and quadric surface
-line drawings. The capability of the machine to generate vivid sterographic pictures
-has been demonstrated. There are, however considerable reasons for developing techniques
-by which line drawings of solids can be shaded, especially the enhancement of the
-sense of solidity and depth. Figures 1 and 2 illustrate the value of shading and shadow
-casting in spatial description. In the line drawing there is no clue as to the relative
-position of the flat plane and the sheet metal console. When shadows are rendered,
-it is clear that the plane is below and to the rear of the console, and the hollow
-nature of the sheet metal assembly is emphasized. Shading can specify the tone or
-color of a surface and the amount of light falling upon that surface from one or more
-light sources. Shadows when sharply defined tend to suggest another viewpoint and
-improves surface definition. When controlled, shading can also emphasize particular
-parts of the drawing. If techniques for the automatic determination of chiaroscuro
-with good resolution should prove to be competitive with line drawings, and this is
-a possibility, machine generated photographs might replace line drawings as the principal
-mode of graphical communication in engineering and architecture.},
-booktitle = {Proceedings of the April 30--May 2, 1968, Spring Joint Computer Conference},
-pages = {37–45},
-numpages = {9},
-location = {Atlantic City, New Jersey},
-series = {AFIPS '68 (Spring)}
+	author = {Appel, Arthur},
+	title = {Some Techniques for Shading Machine Renderings of Solids},
+	year = {1968},
+	isbn = {9781450378970},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	url = {https://doi.org/10.1145/1468075.1468082},
+	doi = {10.1145/1468075.1468082},
+	abstract = {Some applications of computer graphics require a vivid illusion of reality. These
+	include the spatial organization of machine parts, conceptual architectural design,
+	simulation of mechanisms, and industrial design. There has been moderate success in
+	the automatic generation of wire frame, cardboard model, polyhedra, and quadric surface
+	line drawings. The capability of the machine to generate vivid sterographic pictures
+	has been demonstrated. There are, however considerable reasons for developing techniques
+	by which line drawings of solids can be shaded, especially the enhancement of the
+	sense of solidity and depth. Figures 1 and 2 illustrate the value of shading and shadow
+	casting in spatial description. In the line drawing there is no clue as to the relative
+	position of the flat plane and the sheet metal console. When shadows are rendered,
+	it is clear that the plane is below and to the rear of the console, and the hollow
+	nature of the sheet metal assembly is emphasized. Shading can specify the tone or
+	color of a surface and the amount of light falling upon that surface from one or more
+	light sources. Shadows when sharply defined tend to suggest another viewpoint and
+	improves surface definition. When controlled, shading can also emphasize particular
+	parts of the drawing. If techniques for the automatic determination of chiaroscuro
+	with good resolution should prove to be competitive with line drawings, and this is
+	a possibility, machine generated photographs might replace line drawings as the principal
+	mode of graphical communication in engineering and architecture.},
+	booktitle = {Proceedings of the April 30--May 2, 1968, Spring Joint Computer Conference},
+	pages = {37–45},
+	numpages = {9},
+	location = {Atlantic City, New Jersey},
+	series = {AFIPS '68 (Spring)}
 }
 
 @article{whitted_improved_1980,
@@ -71,24 +71,76 @@ series = {AFIPS '68 (Spring)}
 	pages = {343--349},
 }
 
+@article{clark1976bvh,
+	author = {Clark, James H.},
+	title = {Hierarchical Geometric Models for Visible Surface Algorithms},
+	year = {1976},
+	issue_date = {Oct. 1976},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	volume = {19},
+	number = {10},
+	issn = {0001-0782},
+	url = {https://doi.org/10.1145/360349.360354},
+	doi = {10.1145/360349.360354},
+	abstract = {The geometric structure inherent in the definition of the shapes of three-dimensional
+	objects and environments is used not just to define their relative motion and placement,
+	but also to assist in solving many other problems of systems for producing pictures
+	by computer. By using an extension of traditional structure information, or a geometric
+	hierarchy, five significant improvements to current techniques are possible. First,
+	the range of complexity of an environment is greatly increased while the visible complexity
+	of any given scene is kept within a fixed upper limit. Second, a meaningful way is
+	provided to vary the amount of detail presented in a scene. Third, “clipping” becomes
+	a very fast logarithmic search for the resolvable parts of the environment within
+	the field of view. Fourth, frame to frame coherence and clipping define a graphical
+	“working set,” or fraction of the total structure that should be present in primary
+	store for immediate access by the visible surface algorithm. Finally, the geometric
+	structure suggests a recursive descent, visible surface algorithm in which the computation
+	time potentially grows linearly with the visible complexity of the scene.},
+	journal = {Commun. ACM},
+	month = oct,
+	pages = {547–554},
+	numpages = {8},
+	keywords = {visible surface algorithms, hierarchical data structures, hidden surface algorithms, geometric models}
+}
+
+@inproceedings{roccia2012kdtree,
+	booktitle = {Eurographics 2012 - Short Papers},
+	editor = {Carlos Andujar and Enrico Puppo},
+	title = {{Hybrid CPU/GPU KD-Tree Construction for Versatile Ray Tracing}},
+	author = {Roccia, Jean-Patrick and Paulin, Mathias and Coustet, Christophe},
+	year = {2012},
+	publisher = {The Eurographics Association},
+	ISSN = {1017-4656},
+	DOI = {10.2312/conf/EG2012/short/013-016}
+}
+
+@INPROCEEDINGS{Havran02onimproving,
+    author = {Vlastimil Havran and Jiri Bittner},
+    title = {On Improving KD-Trees for Ray Shooting},
+    booktitle = {In Proc. of WSCG 2002 Conference},
+    year = {2002},
+    pages = {209--217}
+}
+
 @inproceedings{keller2015path_tracing_revolution,
-author = {Keller, A. and Fascione, L. and Fajardo, M. and Georgiev, I. and Christensen, P. and Hanika, J. and Eisenacher, C. and Nichols, G.},
-title = {The Path Tracing Revolution in the Movie Industry},
-year = {2015},
-isbn = {9781450336345},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/2776880.2792699},
-doi = {10.1145/2776880.2792699},
-abstract = {As path tracing allows for more realistic and faster lighting, an increasing number
-of movies are created the physically based way. With examples from recent movies,
-the architectures and novel workflows of the next generation of production renderers
-are introduced to a wide audience including technical directors, artists, and researchers.},
-booktitle = {ACM SIGGRAPH 2015 Courses},
-articleno = {24},
-numpages = {7},
-location = {Los Angeles, California},
-series = {SIGGRAPH '15}
+	author = {Keller, A. and Fascione, L. and Fajardo, M. and Georgiev, I. and Christensen, P. and Hanika, J. and Eisenacher, C. and Nichols, G.},
+	title = {The Path Tracing Revolution in the Movie Industry},
+	year = {2015},
+	isbn = {9781450336345},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	url = {https://doi.org/10.1145/2776880.2792699},
+	doi = {10.1145/2776880.2792699},
+	abstract = {As path tracing allows for more realistic and faster lighting, an increasing number
+	of movies are created the physically based way. With examples from recent movies,
+	the architectures and novel workflows of the next generation of production renderers
+	are introduced to a wide audience including technical directors, artists, and researchers.},
+	booktitle = {ACM SIGGRAPH 2015 Courses},
+	articleno = {24},
+	numpages = {7},
+	location = {Los Angeles, California},
+	series = {SIGGRAPH '15}
 }
 
 
@@ -103,11 +155,65 @@ series = {SIGGRAPH '15}
 	pages = {12},
 }
 
+@article{MacDonald2005HeuristicsFR,
+  title={Heuristics for ray tracing using space subdivision},
+  author={J. MacDonald and K. Booth},
+  journal={The Visual Computer},
+  year={2005},
+  volume={6},
+  pages={153-166}
+}
+
 @mastersthesis{macDonald1988space,
   author       = {MacDonald, David}, 
   title        = {Space Subdivision Algorithms for Ray Tracing},
   school       = {University of Waterloo},
   year         = {1988},
+}
+
+@inproceedings{wu2011sahKdTree,
+	author = {Wu, Zhefeng and Zhao, Fukai and Liu, Xinguo},
+	title = {SAH KD-Tree Construction on GPU},
+	year = {2011},
+	isbn = {9781450308960},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	url = {https://doi.org/10.1145/2018323.2018335},
+	doi = {10.1145/2018323.2018335},
+	abstract = {KD-tree is one of the most efficient acceleration data structures for ray tracing.
+	In this paper, we present a kd-tree construction algorithm that is precisely SAH-optimized
+	and runs entirely on GPU. We construct the tree nodes in breadth-first order. In order
+	to precisely evaluate the SAH cost, we design a parallel scheme based on the standard
+	parallel scan primitive to count the triangle numbers for all split candidates, and
+	a bucket-based algorithm to sort the AABBs (axis-aligned bounding box) of the clipped
+	triangles of the child nodes. The proposed parallel algorithms can be mapped well
+	to GPU's streaming architecture. The experiments showed that our algorithm can produce
+	the highest quality kd-tree as the off-line CPU algorithms, but runs faster than multi-core
+	CPU algorithms and the GPU SAH BVH-Tree algorithm.},
+	booktitle = {Proceedings of the ACM SIGGRAPH Symposium on High Performance Graphics},
+	pages = {71–78},
+	numpages = {8},
+	keywords = {ray tracing, parallel computing, KD-tree, GPU, surface area heuristic},
+	location = {Vancouver, British Columbia, Canada},
+	series = {HPG '11}
+}
+
+
+@inproceedings{choi2010sahKdTree,
+	title = "Parallel sah k-D tree construction",
+	abstract = "The k-D tree is a well-studied acceleration data structure for ray tracing. It is used to organize primitives in a scene to allow efficient execution of intersection operations between rays and the primitives. The highest quality k-D tree can be obtained using greedy cost optimization based on a surface area heuristc (SAH). While the high quality enables very fast ray tracing times, a key drawback is that the k-D tree construction time remains prohibitively expensive. This cost is unreasonable for rendering dynamic scenes for future visual computing applications on emerging multicore systems. Much work has therefore been focused on faster parallel k-D tree construction performance at the expense of approximating or ignoring SAH computation, which produces k-D trees that degrade rendering time. In this paper, we present two new parallel algorithms for building precise SAH-optimized k-D trees, with different tradeoffs between the total work done and parallel scalability. The algorithms achieve up to 8? speedup on 32 cores, without degrading tree quality and rendering time, yielding the best reported speedups so far for precise-SAH k-D tree construction.",
+	author = "Byn Choi and Rakesh Komuravelli and Victor Lu and Hyojin Sung and Bocchino, {Robert L.} and Adve, {Sarita V.} and Hart, {John C.}",
+	note = "Funding Information: Acknowledgments Thanks to Ingo Wald for helpful discussions. This work was funded by the Universal Parallel Computing Research Center at the University of Illinois at Urbana-Champaign. The Center is sponsored by Intel Corporation and Microsoft Corporation. Publisher Copyright: {\textcopyright} The Eurographics Association 2010.; 2nd ACM SIGGRAPH / Eurographics on High-Performance Graphics, HPG 2010 ; Conference date: 25-06-2010 Through 27-06-2010",
+	year = "2010",
+	month = jun,
+	day = "25",
+	language = "English (US)",
+	isbn = "9783905674262",
+	series = "High-Performance Graphics - ACM SIGGRAPH / Eurographics Symposium Proceedings, HPG",
+	publisher = "Association for Computing Machinery",
+	pages = "77--86",
+	editor = "Samuli Laine and Warren Hunt and Michael Doggett",
+	booktitle = "High-Performance Graphics 2010 - ACM SIGGRAPH / Eurographics Symposium Proceedings, HPG 2010",
 }
 
 @article{hasselgren_neural_2020,
@@ -137,65 +243,35 @@ series = {SIGGRAPH '15}
 	pages = {8},
 }
 
-@inproceedings{10.1145/800250.807481,
-author = {Fuchs, Henry and Kedem, Zvi M. and Naylor, Bruce F.},
-title = {On Visible Surface Generation by a Priori Tree Structures},
-year = {1980},
-isbn = {0897910214},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/800250.807481},
-doi = {10.1145/800250.807481},
-abstract = {This paper describes a new algorithm for solving the hidden surface (or line) problem,
-to more rapidly generate realistic images of 3-D scenes composed of polygons, and
-presents the development of theoretical foundations in the area as well as additional
-related algorithms. As in many applications the environment to be displayed consists
-of polygons many of whose relative geometric relations are static, we attempt to capitalize
-on this by preprocessing the environment's database so as to decrease the run-time
-computations required to generate a scene. This preprocessing is based on generating
-a “binary space partitioning” tree whose in order traversal of visibility priority
-at run-time will produce a linear order, dependent upon the viewing position, on (parts
-of) the polygons, which can then be used to easily solve the hidden surface problem.
-In the application where the entire environment is static with only the viewing-position
-changing, as is common in simulation, the results presented will be sufficient to
-solve completely the hidden surface problem.},
-booktitle = {Proceedings of the 7th Annual Conference on Computer Graphics and Interactive Techniques},
-pages = {124–133},
-numpages = {10},
-location = {Seattle, Washington, USA},
-series = {SIGGRAPH '80}
-}
-
-
 @article{fuchs1980bsp,
-author = {Fuchs, Henry and Kedem, Zvi M. and Naylor, Bruce F.},
-title = {On Visible Surface Generation by a Priori Tree Structures},
-year = {1980},
-issue_date = {July 1980},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-volume = {14},
-number = {3},
-issn = {0097-8930},
-url = {https://doi.org/10.1145/965105.807481},
-doi = {10.1145/965105.807481},
-abstract = {This paper describes a new algorithm for solving the hidden surface (or line) problem,
-to more rapidly generate realistic images of 3-D scenes composed of polygons, and
-presents the development of theoretical foundations in the area as well as additional
-related algorithms. As in many applications the environment to be displayed consists
-of polygons many of whose relative geometric relations are static, we attempt to capitalize
-on this by preprocessing the environment's database so as to decrease the run-time
-computations required to generate a scene. This preprocessing is based on generating
-a “binary space partitioning” tree whose in order traversal of visibility priority
-at run-time will produce a linear order, dependent upon the viewing position, on (parts
-of) the polygons, which can then be used to easily solve the hidden surface problem.
-In the application where the entire environment is static with only the viewing-position
-changing, as is common in simulation, the results presented will be sufficient to
-solve completely the hidden surface problem.},
-journal = {SIGGRAPH Comput. Graph.},
-month = jul,
-pages = {124–133},
-numpages = {10}
+	author = {Fuchs, Henry and Kedem, Zvi M. and Naylor, Bruce F.},
+	title = {On Visible Surface Generation by a Priori Tree Structures},
+	year = {1980},
+	issue_date = {July 1980},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	volume = {14},
+	number = {3},
+	issn = {0097-8930},
+	url = {https://doi.org/10.1145/965105.807481},
+	doi = {10.1145/965105.807481},
+	abstract = {This paper describes a new algorithm for solving the hidden surface (or line) problem,
+	to more rapidly generate realistic images of 3-D scenes composed of polygons, and
+	presents the development of theoretical foundations in the area as well as additional
+	related algorithms. As in many applications the environment to be displayed consists
+	of polygons many of whose relative geometric relations are static, we attempt to capitalize
+	on this by preprocessing the environment's database so as to decrease the run-time
+	computations required to generate a scene. This preprocessing is based on generating
+	a “binary space partitioning” tree whose in order traversal of visibility priority
+	at run-time will produce a linear order, dependent upon the viewing position, on (parts
+	of) the polygons, which can then be used to easily solve the hidden surface problem.
+	In the application where the entire environment is static with only the viewing-position
+	changing, as is common in simulation, the results presented will be sufficient to
+	solve completely the hidden surface problem.},
+	journal = {SIGGRAPH Comput. Graph.},
+	month = jul,
+	pages = {124–133},
+	numpages = {10}
 }
 
 @article{clark_hierarchical_1976,
@@ -299,36 +375,36 @@ numpages = {10}
 }
 
 @article{koskela2019bmfr,
-author = {Koskela, Matias and Immonen, Kalle and M\"{a}kitalo, Markku and Foi, Alessandro and Viitanen, Timo and J\"{a}\"{a}skel\"{a}inen, Pekka and Kultala, Heikki and Takala, Jarmo},
-title = {Blockwise Multi-Order Feature Regression for Real-Time Path-Tracing Reconstruction},
-year = {2019},
-issue_date = {November 2019},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-volume = {38},
-number = {5},
-issn = {0730-0301},
-url = {https://doi.org/10.1145/3269978},
-doi = {10.1145/3269978},
-abstract = {Path tracing produces realistic results including global illumination using a unified
-simple rendering pipeline. Reducing the amount of noise to imperceptible levels without
-post-processing requires thousands of samples per pixel (spp), while currently it
-is only possible to render extremely noisy 1 spp frames in real time with desktop
-GPUs. However, post-processing can utilize feature buffers, which contain noise-free
-auxiliary data available in the rendering pipeline. Previously, regression-based noise
-filtering methods have only been used in offline rendering due to their high computational
-cost. In this article we propose a novel regression-based reconstruction pipeline,
-called Blockwise Multi-Order Feature Regression (BMFR), tailored for path-traced 1
-spp inputs that runs in real time. The high speed is achieved with a fast implementation
-of augmented QR factorization and by using stochastic regularization to address rank-deficient
-feature data. The proposed algorithm is 1.8\texttimes{} faster than the previous state-of-the-art
-real-time path-tracing reconstruction method while producing better quality frame
-sequences.},
-journal = {ACM Trans. Graph.},
-month = jun,
-articleno = {138},
-numpages = {14},
-keywords = {reconstruction, Path tracing, regression, real-time}
+	author = {Koskela, Matias and Immonen, Kalle and M\"{a}kitalo, Markku and Foi, Alessandro and Viitanen, Timo and J\"{a}\"{a}skel\"{a}inen, Pekka and Kultala, Heikki and Takala, Jarmo},
+	title = {Blockwise Multi-Order Feature Regression for Real-Time Path-Tracing Reconstruction},
+	year = {2019},
+	issue_date = {November 2019},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	volume = {38},
+	number = {5},
+	issn = {0730-0301},
+	url = {https://doi.org/10.1145/3269978},
+	doi = {10.1145/3269978},
+	abstract = {Path tracing produces realistic results including global illumination using a unified
+	simple rendering pipeline. Reducing the amount of noise to imperceptible levels without
+	post-processing requires thousands of samples per pixel (spp), while currently it
+	is only possible to render extremely noisy 1 spp frames in real time with desktop
+	GPUs. However, post-processing can utilize feature buffers, which contain noise-free
+	auxiliary data available in the rendering pipeline. Previously, regression-based noise
+	filtering methods have only been used in offline rendering due to their high computational
+	cost. In this article we propose a novel regression-based reconstruction pipeline,
+	called Blockwise Multi-Order Feature Regression (BMFR), tailored for path-traced 1
+	spp inputs that runs in real time. The high speed is achieved with a fast implementation
+	of augmented QR factorization and by using stochastic regularization to address rank-deficient
+	feature data. The proposed algorithm is 1.8\texttimes{} faster than the previous state-of-the-art
+	real-time path-tracing reconstruction method while producing better quality frame
+	sequences.},
+	journal = {ACM Trans. Graph.},
+	month = jun,
+	articleno = {138},
+	numpages = {14},
+	keywords = {reconstruction, Path tracing, regression, real-time}
 }
 
 @inproceedings{karras_fast_2013,
@@ -362,6 +438,25 @@ keywords = {reconstruction, Path tracing, regression, real-time}
 	month = jun,
 	year = {2012},
 	pages = {33--37},
+}
+
+@phdthesis{havrand2000comparison,
+	author = {Havran, Vlastimil},
+	year = {2000},
+	month = {11},
+	pages = {},
+	title = {Heuristic Ray Shooting Algorithms}
+}
+
+@article{vinkler2015comparison,
+	author = {Vinkler, Marek and Havran, Vlastimil and Bittner, Jiri},
+	year = {2015},
+	month = {11},
+	pages = {n/a-n/a},
+	title = {Performance Comparison of Bounding Volume Hierarchies and Kd-Trees for GPU Ray Tracing},
+	volume = {35},
+	journal = {Computer Graphics Forum},
+	doi = {10.1111/cgf.12776}
 }
 
 @article{wald_ray_2007,
