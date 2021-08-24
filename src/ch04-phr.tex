@@ -30,8 +30,30 @@ line using Go channels. A pixel is colored by casting a new ray with a slightly 
 scene's BVH (See section ...) returning a hit record containing relevant information like intersection point, normal and material at said point. If no intersection is found, the pixel is colored in the color specified in the miss shader, otherwise the closest hit shader will be called with the intersection information. The closest hit shader casts a new ray from the intersection point depending on how the material at given point scatters and calls itself recursively if a new intersection is found and the maximum depth has not been reached. At each step, emitted light will be added to the pixel and multiplied by the materials albedo. Each thread reuses a single ray and hit structure to avoid allocating additional memory.
 \subsection{Bounding Volume Hierarchy}
 \subsubsection{Construction}
-Bounding volume hierarchies are constructed using the algorithm called PHR as proposed by Hendrich et al.\cite{hendrich_parallel_2017}. As previously established, applying full sweep SAH to a whole scene is magnitudes too expensive. PHR tackles this problem by first constructing an auxiliary BVH, which then serves as a hierarchy to find much smaller sets of nodes. Those smaller sets can then be split failry inexpensive by applying full sweep SAH. The two resulting cuts are then refined, meaning that some of the nodes within those cuts are replaced by their children to keep cuts at a desired size.
+Bounding volume hierarchies are constructed using the algorithm called PHR as proposed by Hendrich et al.\cite{hendrich_parallel_2017}. As previously established, applying full sweep SAH to a whole scene is magnitudes too expensive. PHR tackles this problem by first constructing an auxiliary BVH, which then serves as a hierarchy to find much smaller sets of nodes. Those smaller sets can then be split fairly inexpensive by applying full sweep SAH. The two resulting cuts are then refined, meaning that some of the nodes within those cuts are replaced by their children to keep cuts at a desired size.
 
+Auxiliary BVHs are constructed using the well parallelizable LBVH approach. First, all primitives will be processed in parallel to calculate their Morton code. The Morton curve\cite{morton66curve} subdivides the scene space into a uniform grid resulting in Morton codes of fixed length. Computing those codes is fairly efficient as only the primitives centroid coordinates need to be quantized to the grid before computing the code by interleaving successive bits. Once all primitives are paired up with their morton codes, all pairs are sorted according to their morton code in parallel using approximately parallel bucket sort. The BVH tree is then constructed by applying binary search on the node containing all pairs to find the one at which the first bit of the code differs. Both resulting cuts are added as children to the node and processed recursively in parallel.
 
+PHR beginns by finding a set of nodes that seperate root and leaves in the auxiliary LBVH. Nodes are selected by inserting the BVHs root into a priority queue. Items within that queue are processed by checking the surface area of their bounding boxes against a given threshold. If the surface area below that threshold, the node is added to the initial cut, otherwise the children are inserted into the priority queue. The resulting cut is several magnitudes below the full primitive count and can be processed using full sweep SAH.
+
+Splitting a cut using SAH sorts nodes along all three axis and sweeps along those axis, calculating the cost using following equation: % TODO: Add SAH equation
+The lowest cost is chosen and two new cuts are created. These cuts are then refinded, using an adaptive threshold. If a nodes surface are is below this threshold, it is kept withing the cut as is, otherwise it is replaced by its children. 
+% TODO: Adaptive Threshold
+The adaptive threshold shrinks further down the tree making cuts smaller as the pay off of using SAH is higher in the upper levels. Refined cuts are then processed recursively until the whole tree is built. 
+
+Additionally, the tree can be build using higher branching factors, which can improve performance even further. To do so, nodes are only formed, once a sufficient ammount of children is available. Otherwise, the biggest existing cut is processed. 
 
 \subsubsection{Traversal}
+Bounding volume hierarchies are traversed using a stack starting with the trees root. While the stack is not empty, nodes are popped and checked for intersections. If an intersection is found, the nodes children are pushed on top, otherwise the node is discarted. In case a leaf node is encountered, all primitives will be checked and the closest intersection is recorded. Once the stack is empty, the closest intersection found is returned. 
+
+\subsubsection{PHR in Interactive Path Tracing}
+% TODO: Describe integration of PHR into interactive path tracer
+
+\subsubsection{Adaptive Threshold}
+The adaptive threshold depends on two hyperparameters, where $\alpha$ determines how quickly cuts shrink towards the bottom and $\delta$ determines how big the initial cut is. These parameters can be set to adjust the trade off between build time and trace performance. However, the optimal parameters can differ between scenes and view points, especially in interactive path tracing. % TODO: Describe in more detail
+
+Consequently, to unlock the full potential of PHR these parameters need to be adjusted depending on the current state of the scene. To do so, I implemented the optimization approaches grid search and bayesian optimization and compared them.
+
+Grid search is the brute force approach, where a number of possible values is choosen for each parameter to then check all possible combinations. Even though grid search delivers fairly good results, it would usually be too costly for such a time critical task. In this task however, only two parameters need to be optimized and the search space is relatively small making grid search a viable approach. 
+
+% TODO: Explain Bayesian Optimization
