@@ -1,5 +1,37 @@
-\section{Progressive Hierarchical Refinement}
-This section explains the bounding volume hierarchy construction algorithm at the core of this thesis, first introduced by Hendrich et al.~\cite{hendrich_parallel_2017}, as well as the contributions made by this work. These contributions include applying the approach to an interactive path tracer and introducing two approaches for optimizing the hyperparameters utilized by the algorithm. 
-\subsection{Overview}
+\section{Interactive Path Tracer}
+This section provides a broad overview over the interactive path tracer written for this thesis ...
 
-\subsection{Implementation}
+This section explains the BVH construction algorithm at the core of this thesis, first introduced by Hendrich et al.~\cite{hendrich_parallel_2017}, as well as the contributions made by this work. These contributions include applying the approach to an interactive path tracer and introducing two approaches for optimizing the hyperparameters utilized by the algorithm. 
+
+\subsection{Project Environment}
+The fundamental point of this thesis was to write and optimize a CPU path tracer. First and foremost, to see how well path tracing performs on CPUs compared to GPUs. In general, CPUs are designed to execute serial instructions on an intermediate amount of data very fast, while GPUs are optimized to process instructions in parallel using little memory but maximizing throughput. Consequently, CPUs consist of few powerful cores, use pipelining, branch prediction, out-of-order execution and utilize a bigger coherent cache while GPUs consist of many weaker cores and are optimized to run the graphics pipeline. This makes them perform very well with highly coherent work. Path tracing however, can often be very incoherent as rays might be scattered in all kinds of directions hitting very different primitives. In order to find ray intersections it is also necessary to have the whole acceleration structure in memory, which might be an issue with the limited GPU memory. Lastly, data transfer between CPU and GPU is costly and can be avoided by processing data directly on the CPU. 
+
+Considering those aspects, it is an interesting topic implement and benchmark a CPU path tracer.
+
+Another though was that, given sufficient performance, the CPU path tracer could be used in hybrid with GPUs to increase their performance. 
+
+And finally, the goal was to keep all ideas and algorithms as general as possible and not bound to a specific implementation.
+
+The path tracer is written in the programming language Go, which has a few advantages and disadvantages. One of the main reasons for using Go was the built in thread management in the form of go routines. % TODO: Explain go routines
+In addition to keeping concurrency efficient, this keeps the source code very readable tieing in very well with the overall readability of go. Another bonus the language offeres is great benchmarking support as part of the language.
+
+The above listed advantages were enough to choose the language, however, there are still a few shortcomings. The main issue is the performance of the language. Even though Go allows to write code somewhat close to the system, it still is a rather high level language. The built in garbage collector might be very well optimized, but having a garbage collector at all is a substential performance sink and the Go compiler favors compile over execution speed. Some of those problems can be optimized, for example the whole path tracer was written with a zero alloc approach, reusing structs and using C style pointer parameter returns, but other languages like C or Rust could have performed favorably.
+
+\subsection{Path Tracer}
+The renderer itself supports two types of primitives. Spheres, as they have the simplest intersection function and triangles, 
+% TODO: Mention intersection algorithms
+as most geometry can be represented or at least approximated using triangles. Each primitive can have an associated material. Those are currently limited to three different ones, which all have an albedo color value and differ in the way they scatter incoming rays. Diffuse materials scatter rays in a random direction within a unit sphere. Reflective materials reflect the ray in the reflection direction and a certain random deviation is added depending on the diffussion coefficient. Refractive materials utilize snell's law to represent glass objects and other dielectrics. In addition to those materials, there are also light sources, which instead of scattering rays add color to them. 
+
+% TODO: Check if that's actually the way in the final project
+Rendering a frame is done line by line utilizing the worker pattern. $k$ threads render a single line and then wait for a new 
+% TODO: Mark code in text?
+line using Go channels. A pixel is colored by casting a new ray with a slightly offset origin within said pixel and a direction directed towards the according pixel in the image plane. The closest intersection is determined by traversing the 
+% TODO: Add see section
+scene's BVH (See section ...) returning a hit record containing relevant information like intersection point, normal and material at said point. If no intersection is found, the pixel is colored in the color specified in the miss shader, otherwise the closest hit shader will be called with the intersection information. The closest hit shader casts a new ray from the intersection point depending on how the material at given point scatters and calls itself recursively if a new intersection is found and the maximum depth has not been reached. At each step, emitted light will be added to the pixel and multiplied by the materials albedo. Each thread reuses a single ray and hit structure to avoid allocating additional memory.
+\subsection{Bounding Volume Hierarchy}
+\subsubsection{Construction}
+Bounding volume hierarchies are constructed using the algorithm called PHR as proposed by Hendrich et al.\cite{hendrich_parallel_2017}. As previously established, applying full sweep SAH to a whole scene is magnitudes too expensive. PHR tackles this problem by first constructing an auxiliary BVH, which then serves as a hierarchy to find much smaller sets of nodes. Those smaller sets can then be split failry inexpensive by applying full sweep SAH. The two resulting cuts are then refined, meaning that some of the nodes within those cuts are replaced by their children to keep cuts at a desired size.
+
+
+
+\subsubsection{Traversal}

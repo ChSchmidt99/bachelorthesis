@@ -123,6 +123,15 @@
     pages = {209--217}
 }
 
+@article{bittner09rdh,
+	author = {Bittner, Jiri and Havran, Vlastimil},
+	year = {2009},
+	month = {05},
+	pages = {},
+	title = {RDH: Ray distribution heuristics for construction of spatial data structures},
+	doi = {10.1145/1980462.1980475}
+}
+
 @inproceedings{keller2015path_tracing_revolution,
 	author = {Keller, A. and Fascione, L. and Fajardo, M. and Georgiev, I. and Christensen, P. and Hanika, J. and Eisenacher, C. and Nichols, G.},
 	title = {The Path Tracing Revolution in the Movie Industry},
@@ -143,7 +152,6 @@
 	series = {SIGGRAPH '15}
 }
 
-
 @article{chaitanya_interactive_2017,
 	title = {Interactive {Reconstruction} of {Monte} {Carlo} {Image} {Sequences} using a {Recurrent} {Denoising} {Autoencoder}},
 	volume = {36},
@@ -155,13 +163,30 @@
 	pages = {12},
 }
 
-@article{MacDonald2005HeuristicsFR,
-  title={Heuristics for ray tracing using space subdivision},
-  author={J. MacDonald and K. Booth},
-  journal={The Visual Computer},
-  year={2005},
-  volume={6},
-  pages={153-166}
+@article{vinkler12visibility,
+	author = {Vinkler, Marek and Havran, Vlastimil and Sochor, Jiri},
+	year = {2012},
+	month = {06},
+	pages = {},
+	title = {Visibility Driven BVH Build Up Algorithm for Ray Tracing},
+	volume = {36},
+	journal = {Computers & Graphics},
+	doi = {10.1016/j.cag.2012.02.013}
+}
+
+@article{macdonald_heuristics_1990,
+	title = {Heuristics for ray tracing using space subdivision},
+	volume = {6},
+	issn = {1432-2315},
+	url = {https://doi.org/10.1007/BF01911006},
+	doi = {10.1007/BF01911006},
+	abstract = {Ray tracing requires testing of many rays to determine intersections with objects. A way of reducing the computation is to organize objects into hierarchical data structures. We examine two heuristics for space subdivisions using bintrees, one based on the intuition that surface area is a good estimate of intersection probability, one based on the fact that the optimal splitting plane lies between the spatial median and the object median planes of a volume. Traversal algorithms using cross links between nodes are presented as generalizations of ropes in octrees. Simulations of the surface area heuristic and the cross link scheme are presented. These results generalize to other hierarchical data structures.},
+	number = {3},
+	journal = {The Visual Computer},
+	author = {MacDonald, J. David and Booth, Kellogg S.},
+	month = may,
+	year = {1990},
+	pages = {153--166},
 }
 
 @mastersthesis{macDonald1988space,
@@ -339,6 +364,89 @@
     location = "Los Angeles, California, USA",
     doi = "10/gfzndq",
     abstract = "We propose a hybrid ray-tracing/rasterization strategy for real- time rendering enabled by a fast new denoising method. We factor global illumination into direct light at rasterized primary surfaces and two indirect lighting terms, each estimated with one path- traced sample per pixel. Our factorization enables efficient (biased) reconstruction by denoising light without blurring materials. We demonstrate denoising in under 10 ms per 1280×720 frame, compare results against the leading offline denoising methods, and include a supplement with source code, video, and data."
+}
+
+@article{morton66curve,
+	author = {Morton, Guy},
+	year = {1966},
+	month = {01},
+	pages = {},
+	title = {A Computer Oriented Geodetic Data Base and a New Technique in File Sequencing}
+}
+
+@article{lauterbach09lbvh,
+	author = {Lauterbach, C. and Garland, M. and Sengupta, S. and Luebke, D. and Manocha, D.},
+	title = {Fast BVH Construction on GPUs},
+	journal = {Computer Graphics Forum},
+	volume = {28},
+	number = {2},
+	pages = {375-384},
+	doi = {https://doi.org/10.1111/j.1467-8659.2009.01377.x},
+	url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-8659.2009.01377.x},
+	eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-8659.2009.01377.x},
+	abstract = {Abstract We present two novel parallel algorithms for rapidly constructing bounding volume hierarchies on manycore GPUs. The first uses a linear ordering derived from spatial Morton codes to build hierarchies extremely quickly and with high parallel scalability. The second is a top-down approach that uses the surface area heuristic (SAH) to build hierarchies optimized for fast ray tracing. Both algorithms are combined into a hybrid algorithm that removes existing bottlenecks in the algorithm for GPU construction performance and scalability leading to significantly decreased build time. The resulting hierarchies are close in to optimized SAH hierarchies, but the construction process is substantially faster, leading to a significant net benefit when both construction and traversal cost are accounted for. Our preliminary results show that current GPU architectures can compete with CPU implementations of hierarchy construction running on multicore systems. In practice, we can construct hierarchies of models with up to several million triangles and use them for fast ray tracing or other applications.},
+	year = {2009}
+}
+
+@inproceedings{karras12lbvh,
+	author = {Karras, Tero},
+	title = {Maximizing Parallelism in the Construction of BVHs, Octrees, and <i>k</i>-d Trees},
+	year = {2012},
+	isbn = {9783905674415},
+	publisher = {Eurographics Association},
+	address = {Goslar, DEU},
+	abstract = {A number of methods for constructing bounding volume hierarchies and point-based octrees
+	on the GPU are based on the idea of ordering primitives along a space-filling curve.
+	A major shortcoming with these methods is that they construct levels of the tree sequentially,
+	which limits the amount of parallelism that they can achieve. We present a novel approach
+	that improves scalability by constructing the entire tree in parallel. Our main contribution
+	is an in-place algorithm for constructing binary radix trees, which we use as a building
+	block for other types of trees.},
+	booktitle = {Proceedings of the Fourth ACM SIGGRAPH / Eurographics Conference on High-Performance Graphics},
+	pages = {33–37},
+	numpages = {5},
+	location = {Paris, France},
+	series = {EGGH-HPG'12}
+}
+
+@article{Walter2008FastAC,
+	title={Fast agglomerative clustering for rendering},
+	author={B. Walter and K. Bala and M. Kulkarni and K. Pingali},
+	journal={2008 IEEE Symposium on Interactive Ray Tracing},
+	year={2008},
+	pages={81-86}
+}
+
+@inproceedings {apetrei14lbvh,
+	booktitle = {Computer Graphics and Visual Computing (CGVC)},
+	editor = {Rita Borgo and Wen Tang},
+	title = {{Fast and Simple Agglomerative LBVH Construction}},
+	author = {Apetrei, Ciprian},
+	year = {2014},
+	publisher = {The Eurographics Association},
+	ISBN = {978-3-905674-70-5},
+	DOI = {10.2312/cgvc.20141206}
+}
+
+@inproceedings{wald07fastConstruction,
+	author = {Wald, Ingo},
+	year = {2007},
+	month = {10},
+	pages = {33 - 40},
+	title = {On Fast Construction of SAH based Bounding Volume Hierarchies},
+	isbn = {978-1-4244-1629-5},
+	journal = {Proceedings of IEEE Symposium on Interactive Ray Tracing 2007},
+	doi = {10.1109/RT.2007.4342588}
+}
+
+@inproceedings{popov09harmful,
+	author = {Popov, Stefan and Georgiev, Iliyan and Dimov, Rossen and Slusallek, Philipp},
+	year = {2009},
+	month = {01},
+	pages = {15-22},
+	title = {Object partitioning considered harmful: Space subdivision for BVHs},
+	journal = {Proceedings of the Conference on High Performance Graphics 2009 (HPG ’09)},
+	doi = {10.1145/1572769.1572772}
 }
 
 @article{schied_gradient_2018,
