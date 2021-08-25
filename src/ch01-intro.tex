@@ -7,12 +7,3 @@ While this technology is undoubtedly a leap in the right direction, performance 
 
 % TODO: Add references to the corresponding sections 
 In particular, this thesis provides a self-contained overview over the basics of real-time ray tracing as well as a broader outline over some related topics to make it as accessible as possible. All findings are based on an interactive CPU path tracer written from scratch in the programming language Go, which is elaborated further including some implementation details. This might be particularly helpful as a starting point for further research and optimizations. Furthermore, a closer look at bounding volume hierarchies is presented, and the approach of progressive hierarchical refinement\cite{hendrich_parallel_2017} is introduced as a state-of-the-art algorithm to construct such acceleration structures. The integration of the aforementioned approach into an interactive path tracer is described and validated, as this was still an open question. Finally, two methods for optimizing hyperparameters related to the construction algorithm in real-time are introduced, evaluated and discussed.
-
-
-Why CPU:
-- Can be used with conventional and turing GPUs 
-- More general for algorithm validation
-- Stack
-- Bigger memory 
-- No costly transfer to GPU 
-- Unused in rendering 

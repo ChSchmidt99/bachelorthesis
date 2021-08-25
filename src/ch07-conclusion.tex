@@ -1,1 +1,5 @@
 \section{Conclusion}
+
+\subsection{Further Work}
+Path tracing is a very extensive topic and especially considering the task of writing a complete path tracer, there is a lot of work left open. Considering the path tracer, a missing but essential aspect is denoising. As discussed earlier, recently a lot of progress has been achieved in that field of research and integrating some of that into this project would be an interesting addition. Importance sampling is another technique that was not considered in this work, but might improve it a decent amount. 
+Staying with the main focus of this thesis, replacing LBVH with another fast BVH builder could bring interesting results. The full sweep SAH at the core of PHR is still relatively expensive and might be replacable by the more efficient binning SAH for better performance, or extended by using other cost functions like ray distribution heuristic or occlusion heuristic. Finally, optimization of PHRs hyperparameters is not ideal yet and might be improved by either using other optimization procedures, or improving the evaluation function.
