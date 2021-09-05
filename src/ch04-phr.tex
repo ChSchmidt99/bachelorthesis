@@ -1,49 +1,56 @@
 \section{Interactive Path Tracer}
-This section provides a broad overview over the interactive path tracer written for this thesis ...
-
-This section explains the BVH construction algorithm at the core of this thesis, first introduced by Hendrich et al.~\cite{hendrich_parallel_2017}, as well as the contributions made by this work. These contributions include applying the approach to an interactive path tracer and introducing two approaches for optimizing the hyperparameters utilized by the algorithm. 
+This section provides a broad overview over the interactive path tracer written for this thesis including the BVH construction algorithm called PHR as first introduced by Hendrich et al.~\cite{hendrich_parallel_2017}. Furthermore, the contributions made by this thesis are explained in more detail. These contributions include applying PHR to an interactive path tracer and introducing two approaches for optimizing the hyperparameters utilized by the algorithm in real-time. 
 
 \subsection{Project Environment}
 The fundamental point of this thesis was to write and optimize a CPU path tracer. First and foremost, to see how well path tracing performs on CPUs compared to GPUs. In general, CPUs are designed to execute serial instructions on an intermediate amount of data very fast, while GPUs are optimized to process instructions in parallel using little memory but maximizing throughput. Consequently, CPUs consist of few powerful cores, use pipelining, branch prediction, out-of-order execution and utilize a bigger coherent cache while GPUs consist of many weaker cores and are optimized to run the graphics pipeline. This makes them perform very well with highly coherent work. Path tracing however, can often be very incoherent as rays might be scattered in all kinds of directions hitting very different primitives. In order to find ray intersections it is also necessary to have the whole acceleration structure in memory, which might be an issue with the limited GPU memory. Lastly, data transfer between CPU and GPU is costly and can be avoided by processing data directly on the CPU. 
 
-Considering those aspects, it is an interesting topic implement and benchmark a CPU path tracer.
+Considering those aspects, it is an interesting topic to implement and benchmark a CPU path tracer.
 
-Another though was that, given sufficient performance, the CPU path tracer could be used in hybrid with GPUs to increase their performance. 
+Another though was that, given sufficient performance, the CPU path tracer could be used in hybrid with GPUs to increase their performance. % Mention UE5 hybrid
 
 And finally, the goal was to keep all ideas and algorithms as general as possible and not bound to a specific implementation.
 
 The path tracer is written in the programming language Go, which has a few advantages and disadvantages. One of the main reasons for using Go was the built in thread management in the form of go routines. % TODO: Explain go routines
-In addition to keeping concurrency efficient, this keeps the source code very readable tieing in very well with the overall readability of go. Another bonus the language offeres is great benchmarking support as part of the language.
+In addition to keeping concurrency efficient, this keeps the source code very readable tieing in very well with the overall readability of Go. Another bonus the language offeres is great benchmarking support as part of the language.
 
-The above listed advantages were enough to choose the language, however, there are still a few shortcomings. The main issue is the performance of the language. Even though Go allows to write code somewhat close to the system, it still is a rather high level language. The built in garbage collector might be very well optimized, but having a garbage collector at all is a substential performance sink and the Go compiler favors compile over execution speed. Some of those problems can be optimized, for example the whole path tracer was written with a zero alloc approach, reusing structs and using C style pointer parameter returns, but other languages like C or Rust could have performed favorably.
+The above listed advantages were enough to choose the language, however, there are still a few shortcomings. The main issue is the performance of the language. Even though Go allows to write code somewhat close to the system, it still is a rather high level language. The built in garbage collector might be very well optimized, but having a garbage collector at all is a substential performance sink and the Go compiler favors compile time over execution performance. Some of those problems can be optimized, for example the whole path tracer was written with a 'zero alloc' approach, reusing structs where possible and using C style pointer parameter returns, but other languages like C or Rust could have performed favorably.
 
 \subsection{Path Tracer}
 The renderer itself supports two types of primitives. Spheres, as they have the simplest intersection function and triangles, 
 % TODO: Mention intersection algorithms
-as most geometry can be represented or at least approximated using triangles. Each primitive can have an associated material. Those are currently limited to three different ones, which all have an albedo color value and differ in the way they scatter incoming rays. Diffuse materials scatter rays in a random direction within a unit sphere. Reflective materials reflect the ray in the reflection direction and a certain random deviation is added depending on the diffussion coefficient. Refractive materials utilize snell's law to represent glass objects and other dielectrics. In addition to those materials, there are also light sources, which instead of scattering rays add color to them. 
+as most geometry can be represented or at least approximated using triangles. Each primitive can have an associated material. Those are currently limited to three different ones, all having an albedo color value and a scatter function for incoming rays. Diffuse materials scatter rays in a random direction within a unit sphere. Reflective materials reflect the ray in the reflection direction and a certain random deviation is added depending on a diffussion coefficient. Refractive materials utilize snell's law to represent glass objects and other dielectrics. In addition to those materials, there are also light sources, which instead of scattering rays add color to them. 
 
 % TODO: Check if that's actually the way in the final project
 Rendering a frame is done line by line utilizing the worker pattern. $k$ threads render a single line and then wait for a new 
 % TODO: Mark code in text?
 line using Go channels. A pixel is colored by casting a new ray with a slightly offset origin within said pixel and a direction directed towards the according pixel in the image plane. The closest intersection is determined by traversing the 
 % TODO: Add see section
-scene's BVH (See section ...) returning a hit record containing relevant information like intersection point, normal and material at said point. If no intersection is found, the pixel is colored in the color specified in the miss shader, otherwise the closest hit shader will be called with the intersection information. The closest hit shader casts a new ray from the intersection point depending on how the material at given point scatters and calls itself recursively if a new intersection is found and the maximum depth has not been reached. At each step, emitted light will be added to the pixel and multiplied by the materials albedo. Each thread reuses a single ray and hit structure to avoid allocating additional memory.
+scene's BVH\nameref{traversal} returning a hit record containing relevant information like intersection point, normal and material at said point. If no intersection is found, the pixel is colored in the color specified by the miss shader, otherwise the closest hit shader will be called with the intersection information. The closest hit shader casts a new ray from the intersection point depending on how the material at given point scatters and calls itself recursively if a new intersection is found and the maximum depth has not been reached. At each step, emitted light will be added to the pixel and multiplied by the materials albedo. Each thread reuses a single ray and hit structure to avoid allocating additional memory.
 \subsection{Bounding Volume Hierarchy}
 \subsubsection{Construction}
 Bounding volume hierarchies are constructed using the algorithm called PHR as proposed by Hendrich et al.\cite{hendrich_parallel_2017}. As previously established, applying full sweep SAH to a whole scene is magnitudes too expensive. PHR tackles this problem by first constructing an auxiliary BVH, which then serves as a hierarchy to find much smaller sets of nodes. Those smaller sets can then be split fairly inexpensive by applying full sweep SAH. The two resulting cuts are then refined, meaning that some of the nodes within those cuts are replaced by their children to keep cuts at a desired size.
 
-Auxiliary BVHs are constructed using the well parallelizable LBVH approach. First, all primitives will be processed in parallel to calculate their Morton code. The Morton curve\cite{morton66curve} subdivides the scene space into a uniform grid resulting in Morton codes of fixed length. Computing those codes is fairly efficient as only the primitives centroid coordinates need to be quantized to the grid before computing the code by interleaving successive bits. Once all primitives are paired up with their morton codes, all pairs are sorted according to their morton code in parallel using approximately parallel bucket sort. The BVH tree is then constructed by applying binary search on the node containing all pairs to find the one at which the first bit of the code differs. Both resulting cuts are added as children to the node and processed recursively in parallel.
+Auxiliary BVHs are constructed using the well parallelizable LBVH approach. First, all primitives will be processed in parallel to compute their Morton code. The Morton curve\cite{morton66curve} subdivides the scene space into a uniform grid resulting in Morton codes of fixed length. Computing those codes is fairly efficient as only the primitives centroid coordinates need to be quantized to the grid before computing the code by interleaving successive bits. Once all primitives are paired up with their morton codes, all pairs are sorted according to their morton code in parallel using approximately parallel bucket sort. The BVH tree is then constructed by applying binary search on the node containing all pairs to find the one at which the first bit of the code differs. Both resulting cuts are added as children to the node and processed recursively in parallel.
 
-PHR beginns by finding a set of nodes that seperate root and leaves in the auxiliary LBVH. Nodes are selected by inserting the BVHs root into a priority queue. Items within that queue are processed by checking the surface area of their bounding boxes against a given threshold. If the surface area below that threshold, the node is added to the initial cut, otherwise the children are inserted into the priority queue. The resulting cut is several magnitudes below the full primitive count and can be processed using full sweep SAH.
+PHR beginns by finding a set of nodes that seperate root and leaves in the auxiliary LBVH. Nodes are selected by inserting the BVHs root into a priority queue. Items within that queue are processed by checking the surface area of their bounding boxes against a given threshold. If the surface area is below that threshold, the node is added to the initial cut, otherwise its children are inserted into the priority queue. The resulting cut is several magnitudes below the full primitive count and can be processed inexpensively using full sweep SAH.
 
-Splitting a cut using SAH sorts nodes along all three axis and sweeps along those axis, calculating the cost using following equation: % TODO: Add SAH equation
-The lowest cost is chosen and two new cuts are created. These cuts are then refinded, using an adaptive threshold. If a nodes surface are is below this threshold, it is kept withing the cut as is, otherwise it is replaced by its children. 
+Splitting a cut using SAH beginns by sorting nodes along one axis and sweeping along this axis, calculating the cost using following equation: % TODO: Add SAH equation
+
+\[C(i)=S_L(i)n_L(i)+S_R(i)n_R(i)\]
+
+With $S_L(i)$ and $S_R(i)$ being the bounding boxes surface areas of the left and right subsets and $n_L(i)$ and $n_R(i)$ being the nuber of nodes in the corresponding subtrees.
+
+This process is repeated for all three axis and the lowest cost is chosen to create the two new cuts. These cuts are then refinded, using an adaptive threshold. If a nodes surface are is below this threshold, it is kept within the cut as is, otherwise it is replaced by its children. 
 % TODO: Adaptive Threshold
+This adaptive threshold is given as 
+\[t_d = S /{2^{\alpha d + \delta}}\]
+with $S$ being the surface are of the scene bounding box and $d$ the current depth in the tree. $\alpha$ and $\delta$ are parameters that will be elaborated in more detail in section \nameref{adaptive threshold}.
 The adaptive threshold shrinks further down the tree making cuts smaller as the pay off of using SAH is higher in the upper levels. Refined cuts are then processed recursively until the whole tree is built. 
 
 Additionally, the tree can be build using higher branching factors, which can improve performance even further. To do so, nodes are only formed, once a sufficient ammount of children is available. Otherwise, the biggest existing cut is processed. 
 
 \subsubsection{Traversal}
+\label{traversal}
 Bounding volume hierarchies are traversed using a stack starting with the trees root. While the stack is not empty, nodes are popped and checked for intersections. If an intersection is found, the nodes children are pushed on top, otherwise the node is discarted. In case a leaf node is encountered, all primitives will be checked and the closest intersection is recorded. Once the stack is empty, the closest intersection found is returned. 
 
 \subsubsection{PHR in Interactive Path Tracing}
@@ -51,7 +58,11 @@ Bounding volume hierarchies are traversed using a stack starting with the trees 
 An approach for integrating PHR into interactive applications was mentioned in the original paper\cite{hendrich_parallel_2017}, but its validation remained an open topic. The idea was to only build the auxiliary BVH once in the beginning and then refit it very efficiently between frames. Refitting works in parallel by starting at the leaves of the LBVH and computing the new bounding box before traversing up the tree. Each branch is equipped with an atomic counter and the second thread visiting each node will update its bounding box. The refined PHR BVH is then computed using the refitted LBVH version. 
 
 \subsubsection{Adaptive Threshold}
-The adaptive threshold depends on two hyperparameters, where $\alpha$ determines how quickly cuts shrink towards the bottom and $\delta$ determines how big the initial cut is. These parameters can be set to adjust the trade off between build time and trace performance. However, the optimal parameters can differ between scenes and view points, especially in interactive path tracing. % TODO: Describe in more detail
+\label{adaptive threshold}
+The adaptive threshold depends on two hyperparameters, where $\alpha$ determines how quickly cuts shrink towards the bottom of the tree and $\delta$ determines how big the initial cut is. These parameters can be set to adjust the trade off between build time and trace performance. However, the optimal parameters can differ between scenes and view points, especially in interactive path tracing. 
+
+
+% TODO: Describe in more detail
 
 Consequently, to unlock the full potential of PHR these parameters need to be adjusted depending on the current state of the scene. To do so, I implemented the optimization approaches grid search and bayesian optimization and compared them.
 
