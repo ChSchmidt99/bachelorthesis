@@ -14,7 +14,7 @@
 % meta informations
 \department{Institut f\"ur Informatik}
 \lfe{Lehr- und Forschungseinheit Medieninformatik}
-\professor{Prof.\ Dr.\ Andreas Butz}
+\professor{Prof.\ Dr.\ Butz}
 \type{Bachelor's Thesis}
 \title{Progressive BVH Refinement in Interactive Ray Tracing}
 \author{Christian Schmidt}
@@ -23,16 +23,23 @@
 \supervisor{Changkun Ou}
 \taskdescription{
     \begin{description}
-        \item[THESIS TITLE]
-        \item[Problem Statement] TO BE ADDED
-        \item[Scope of the Thesis] TO BE ADDED
-        \item[Tasks] TO BE ADDED
-        \item[Requirements] TO BE ADDED
-        \item[Keywords] TO BE ADDED
+        \item[Progressive BVH Refinement in Interactive Ray Tracing]
+        \item[Problem Statement] Path tracing in real time become avaliable on the GPU side in recent years due to the recent advances in image denoising techniques, such as NVIDIA DLSS.
+
+        It is interesting to optimize and render everything directly on the CPU in real time for reasonably smaller scenes.
+        \item[Tasks]
+        - Implement a multi-threaded CPU ray tracer
+        - Profile and identify the bottleneck of your ray tracer implementation
+        - Benchmark and compare the performance difference between your CPU ray tracer and an equivalent CUDA ray tracer
+        - Summarize your findings in a thesis and presenting them to audiences
+        \item[Requirements]
+        - Have experience or projects using C++ (or Go)
+        - General knowledge about computer graphics
     \end{description}
 }
 \acknoledgement{
     I would like to appreciate ...
+    % TODO: Thank Changkun for help and provided frameworks
 }
 \abstract{
     This thesis proposes ...
