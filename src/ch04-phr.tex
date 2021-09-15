@@ -47,15 +47,14 @@ Morton codes are assigned in parallel by processing $[n/t]$ primitives per threa
 The corresponding BVH can be constructed by recursively splitting the set of primitives at the highest bit withing the current interval. This is done using a Go channel and entries representing a node in the finished tree. Each thread fetches such a node and finds the split in the corresponding slice by applying linear search. If the node does not become a leaf, the resulting cuts are sent to the channel to be processed by idle threads.
 
 Finally, the bounding boxes of the tree need to be updated. This is done in parallel by starting at the trees leaves and traversing towards the root. Whenever a thread visits a node the bounding box is updated using the child or primitive bounding boxes. Then the parents atomic counter is incremented and if all children are set, the thread also processes the parent. Otherwise, the thread fetches an unprocessed leaf from a queue. The same procedure is executed when refitting the LBVH on scene changes. 
-\subsubsection{}
-Once all primitives are paired up with their Morton codes, all pairs are sorted according to their Morton code in parallel using approximately parallel bucket sort. The BVH tree is then constructed by applying binary search on the node containing all pairs to find the one at which the first bit of the code differs. Both resulting cuts are added as children to the node and processed recursively in parallel.
+\subsubsection{Algorithm}
 
 
 
 
 PHR beginns by finding a set of nodes that seperate root and leaves in the auxiliary LBVH. Nodes are selected by inserting the BVHs root into a priority queue. Items within that queue are processed by checking the surface area of their bounding boxes against a given threshold. If the surface area is below that threshold, the node is added to the initial cut, otherwise its children are inserted into the priority queue. The resulting cut is several magnitudes below the full primitive count and can be processed inexpensively using full sweep SAH.
 
-Splitting a cut using SAH beginns by sorting nodes along one axis and sweeping along this axis, calculating the cost using following equation: % TODO: Add SAH equation
+Splitting a cut using SAH beginns by sorting nodes along one axis and sweeping along this axis, calculating the cost using following equation:
 
 \[C(i)=S_L(i)n_L(i)+S_R(i)n_R(i)\]
 
@@ -74,7 +73,7 @@ Additionally, the tree can be build using higher branching factors, which can im
 \label{traversal}
 Bounding volume hierarchies are traversed using a stack starting with the trees root. While the stack is not empty, nodes are popped and checked for intersections. If an intersection is found, the nodes children are pushed on top, otherwise the node is discarted. In case a leaf node is encountered, all primitives will be checked and the closest intersection is recorded. Once the stack is empty, the closest intersection found is returned. 
 
-\subsubsection{PHR in Interactive Path Tracing}
+\subsubsection{Integration into Interactive Path Tracing}
 % TODO: Describe integration of PHR into interactive path tracer
 An approach for integrating PHR into interactive applications was mentioned in the original paper\cite{hendrich_parallel_2017}, but its validation remained an open topic. The idea was to only build the auxiliary BVH once in the beginning and then refit it very efficiently between frames. Refitting works in parallel by starting at the leaves of the LBVH and computing the new bounding box before traversing up the tree. Each branch is equipped with an atomic counter and the second thread visiting each node will update its bounding box. The refined PHR BVH is then computed using the refitted LBVH version. 
 
