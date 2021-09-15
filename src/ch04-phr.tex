@@ -48,19 +48,18 @@ The corresponding BVH can be constructed by recursively splitting the set of pri
 
 Finally, the bounding boxes of the tree need to be updated. This is done in parallel by starting at the trees leaves and traversing towards the root. Whenever a thread visits a node the bounding box is updated using the child or primitive bounding boxes. Then the parents atomic counter is incremented and if all children are set, the thread also processes the parent. Otherwise, the thread fetches an unprocessed leaf from a queue. The same procedure is executed when refitting the LBVH on scene changes. 
 \subsubsection{Algorithm}
+The main progressive hierarchical refinement algorithm beginns by finding a set of nodes that seperate root and leaves in the auxiliary LBVH. Nodes are selected in parallel using a priority queue. A thread pops an entry from that queue and compares its bounding volume surface area to a given threshold. If the surface area is below that threshold or the cut has reached its maximum size, the node is added to the initial cut. Otherwise its children are inserted into the priority queue to be processed by another thread. The resulting cut is several magnitudes below the full primitive count and can be processed fairly inexpensively using full sweep SAH.
 
-
-
-
-PHR beginns by finding a set of nodes that seperate root and leaves in the auxiliary LBVH. Nodes are selected by inserting the BVHs root into a priority queue. Items within that queue are processed by checking the surface area of their bounding boxes against a given threshold. If the surface area is below that threshold, the node is added to the initial cut, otherwise its children are inserted into the priority queue. The resulting cut is several magnitudes below the full primitive count and can be processed inexpensively using full sweep SAH.
-
-Splitting a cut using SAH beginns by sorting nodes along one axis and sweeping along this axis, calculating the cost using following equation:
-
+Cuts are split by evaluating an adapted version of the surface area heuristic for all three axis and choosing the split with the lowest cost. The cut becomes a leaf, if the cost of not splitting at all is the lowest. Each axis is evaluated by sorting nodes along given axis according to their bounding box centroid. The SAH cost for a split at the index $i$ in the sorted set is given as 
 \[C(i)=S_L(i)n_L(i)+S_R(i)n_R(i)\]
+where $S_L(i)$ and $S_R(i)$ are the bounding boxes surface areas of the left and right subsets and $n_L(i)$ and $n_R(i)$ are the nuber of nodes in the corresponding subtrees. The evaluation algorithm first computes all right costs $S_R(i)n_R(i)$ by incrementally extending the split bounding box and storing the partial costs, which is more efficient than computing the full bounding box at each step. The full cost is then calculated in the same fashion, extending the bounding box from the left to solve $S_L(i)n_L(i)$. 
 
-With $S_L(i)$ and $S_R(i)$ being the bounding boxes surface areas of the left and right subsets and $n_L(i)$ and $n_R(i)$ being the nuber of nodes in the corresponding subtrees.
+Splitting the cut reduces the number of nodes in each new cut and doing so multiple times would lead to a cut size of one. To keep cuts at a larger size for longer and better utilize the hierarchical information the auxiliary BVH can provide, cuts are refined after splitting. Keeping cuts at a constant size as proposed by Hunt et al.\cite{hunt07lazybuild} would become rather expensive towards the bottom of the tree due to the growing number of cuts. As a solution, Hendrich et al.\cite{hendrich_parallel_2017} proposed an adaptive way to refine cuts.  
 
-This process is repeated for all three axis and the lowest cost is chosen to create the two new cuts. These cuts are then refinded, using an adaptive threshold. If a nodes surface are is below this threshold, it is kept within the cut as is, otherwise it is replaced by its children. 
+
+
+
+This process is repeated for all three axis and the lowest cost is chosen to create the two new cuts. These cuts are then refined, using an adaptive threshold. If a nodes surface are is below this threshold, it is kept within the cut as is, otherwise it is replaced by its children. 
 % TODO: Adaptive Threshold
 This adaptive threshold is given as 
 \[t_d = S /{2^{\alpha d + \delta}}\]
