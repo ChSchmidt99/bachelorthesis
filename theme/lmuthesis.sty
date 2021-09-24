@@ -206,6 +206,17 @@
     \cleardoublepage
 }
 
+\newcommand{\notationDescription}{}
+\newcommand{\notation}[1]{\renewcommand{\notationDescription}{#1}}
+
+\newcommand{\makenotation}{
+    \clearpage
+    \section*{Notation}
+    \notationDescription
+    \cleardoublepage
+}
+
+
 \newcommand{\acknoledgementDescription}{}
 \newcommand{\acknoledgement}[1]{\renewcommand{\acknoledgementDescription}{#1}}
 
@@ -223,6 +234,7 @@
     \abstractDescription
     \cleardoublepage
 }
+
 
 
 \newcommand{\maketoc}{

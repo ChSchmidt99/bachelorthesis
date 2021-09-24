@@ -1,17 +1,63 @@
 @techreport{nvidia2017turing,
-  title={NVIDIA Turing GPU Architecture},
-  number={WP-09183-001_v01},
-  author={Nvidia},
-  year={2018},
-  type={White Paper},
-  url={https://images.nvidia.com/aem-dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf},
+    title={NVIDIA Turing GPU Architecture},
+    number={WP-09183-001_v01},
+    author={Nvidia},
+    year={2018},
+    type={White Paper},
+    url={https://images.nvidia.com/aem-dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf},
+}
+
+@Inbook{weik01lambert,
+    author="Weik, Martin H.",
+    title="Lambert's cosine law",
+    bookTitle="Computer Science and Communications Dictionary",
+    year="2001",
+    publisher="Springer US",
+    address="Boston, MA",
+    pages="868--868",
+    isbn="978-1-4020-0613-5",
+    doi="10.1007/1-4020-0613-6_9901",
+    url="https://doi.org/10.1007/1-4020-0613-6_9901"
+}
+
+
+
+@article{kalantari15denoising,
+    author = {Nima Khademi Kalantari and Steve Bako and Pradeep Sen},
+    title = {{A Machine Learning Approach for Filtering Monte Carlo Noise}},
+    journal = {ACM Transactions on Graphics (TOG) (Proceedings of SIGGRAPH 2015)},
+    volume = {34},
+    number = {4},
+    year = {2015},
+}
+
+@inproceedings{pelikan99boa,
+    author = {Pelikan, Martin and Goldberg, David E. and Cant\'{u}-Paz, Erick},
+    title = {BOA: The Bayesian Optimization Algorithm},
+    year = {1999},
+    isbn = {1558606114},
+    publisher = {Morgan Kaufmann Publishers Inc.},
+    address = {San Francisco, CA, USA},
+    booktitle = {Proceedings of the 1st Annual Conference on Genetic and Evolutionary Computation - Volume 1},
+    pages = {525–532},
+    numpages = {8},
+    location = {Orlando, Florida},
+    series = {GECCO'99}
+}
+
+@article{bittner09rdh,
+    author = {Bittner, Jiri and Havran, Vlastimil},
+    year = {2009},
+    month = {05},
+    pages = {},
+    title = {RDH: Ray distribution heuristics for construction of spatial data structures},
+    doi = {10.1145/1980462.1980475}
 }
 
 @article{hendrich_parallel_2017,
 	title = {Parallel {BVH} {Construction} using {Progressive} {Hierarchical} {Refinement}},
 	volume = {36},
 	doi = {10.1111/cgf.13143},
-	abstract = {We propose a novel algorithm for construction of bounding volume hierarchies (BVHs) for multi-core CPU architectures. The algorithm constructs the BVH by a divisive top-down approach using a progressively refined cut of an existing auxiliary BVH. We propose a new strategy for refining the cut that significantly reduces the workload of individual steps of BVH construction. Additionally, we propose a new method for integrating spatial splits into the BVH construction algorithm. The auxiliary BVH is constructed using a very fast method such as LBVH based on Morton codes. We show that the method provides a very good trade-off between the build time and ray tracing performance. We evaluated the method within the Embree ray tracing framework and show that it compares favorably with the Embree BVH builders regarding build time while maintaining comparable ray tracing speed. © 2017 The Author(s) Computer Graphics Forum © 2017 The Eurographics Association and John Wiley \& Sons Ltd. Published by John Wiley \& Sons Ltd.},
 	journal = {Computer Graphics Forum},
 	author = {Hendrich, Jakub and Meister, Daniel and Bittner, Jiri},
 	month = may,
@@ -28,30 +74,10 @@
 	address = {New York, NY, USA},
 	url = {https://doi.org/10.1145/1468075.1468082},
 	doi = {10.1145/1468075.1468082},
-	abstract = {Some applications of computer graphics require a vivid illusion of reality. These
-	include the spatial organization of machine parts, conceptual architectural design,
-	simulation of mechanisms, and industrial design. There has been moderate success in
-	the automatic generation of wire frame, cardboard model, polyhedra, and quadric surface
-	line drawings. The capability of the machine to generate vivid sterographic pictures
-	has been demonstrated. There are, however considerable reasons for developing techniques
-	by which line drawings of solids can be shaded, especially the enhancement of the
-	sense of solidity and depth. Figures 1 and 2 illustrate the value of shading and shadow
-	casting in spatial description. In the line drawing there is no clue as to the relative
-	position of the flat plane and the sheet metal console. When shadows are rendered,
-	it is clear that the plane is below and to the rear of the console, and the hollow
-	nature of the sheet metal assembly is emphasized. Shading can specify the tone or
-	color of a surface and the amount of light falling upon that surface from one or more
-	light sources. Shadows when sharply defined tend to suggest another viewpoint and
-	improves surface definition. When controlled, shading can also emphasize particular
-	parts of the drawing. If techniques for the automatic determination of chiaroscuro
-	with good resolution should prove to be competitive with line drawings, and this is
-	a possibility, machine generated photographs might replace line drawings as the principal
-	mode of graphical communication in engineering and architecture.},
 	booktitle = {Proceedings of the April 30--May 2, 1968, Spring Joint Computer Conference},
 	pages = {37–45},
 	numpages = {9},
-	location = {Atlantic City, New Jersey},
-	series = {AFIPS '68 (Spring)}
+	location = {Atlantic City, New Jersey}
 }
 
 @article{whitted_improved_1980,
@@ -60,7 +86,6 @@
 	issn = {0001-0782},
 	url = {https://doi.org/10.1145/358876.358882},
 	doi = {10.1145/358876.358882},
-	abstract = {To accurately render a two-dimensional image of a three-dimensional scene, global illumination information that affects the intensity of each pixel of the image must be known at the time the intensity is calculated. In a simplified form, this information is stored in a tree of “rays” extending from the viewer to the first surface encountered and from there to other surfaces and to the light sources. A visible surface algorithm creates this tree for each pixel of the display and passes it to the shader. The shader then traverses the tree to determine the intensity of the light received by the viewer. Consideration of all of these factors allows the shader to accurately simulate true reflection, shadows, and refraction, as well as the effects simulated by conventional shaders. Anti-aliasing is included as an integral part of the visibility calculations. Surfaces displayed include curved as well as polygonal surfaces.},
 	number = {6},
 	urldate = {2021-05-04},
 	journal = {Communications of the ACM},
@@ -83,21 +108,6 @@
 	issn = {0001-0782},
 	url = {https://doi.org/10.1145/360349.360354},
 	doi = {10.1145/360349.360354},
-	abstract = {The geometric structure inherent in the definition of the shapes of three-dimensional
-	objects and environments is used not just to define their relative motion and placement,
-	but also to assist in solving many other problems of systems for producing pictures
-	by computer. By using an extension of traditional structure information, or a geometric
-	hierarchy, five significant improvements to current techniques are possible. First,
-	the range of complexity of an environment is greatly increased while the visible complexity
-	of any given scene is kept within a fixed upper limit. Second, a meaningful way is
-	provided to vary the amount of detail presented in a scene. Third, “clipping” becomes
-	a very fast logarithmic search for the resolvable parts of the environment within
-	the field of view. Fourth, frame to frame coherence and clipping define a graphical
-	“working set,” or fraction of the total structure that should be present in primary
-	store for immediate access by the visible surface algorithm. Finally, the geometric
-	structure suggests a recursive descent, visible surface algorithm in which the computation
-	time potentially grows linearly with the visible complexity of the scene.},
-	journal = {Commun. ACM},
 	month = oct,
 	pages = {547–554},
 	numpages = {8},
@@ -141,15 +151,26 @@
 	address = {New York, NY, USA},
 	url = {https://doi.org/10.1145/2776880.2792699},
 	doi = {10.1145/2776880.2792699},
-	abstract = {As path tracing allows for more realistic and faster lighting, an increasing number
-	of movies are created the physically based way. With examples from recent movies,
-	the architectures and novel workflows of the next generation of production renderers
-	are introduced to a wide audience including technical directors, artists, and researchers.},
 	booktitle = {ACM SIGGRAPH 2015 Courses},
 	articleno = {24},
 	numpages = {7},
 	location = {Los Angeles, California},
 	series = {SIGGRAPH '15}
+}
+
+@inproceedings{Deshpande2012AnalysisOT,
+  title={Analysis of the Go runtime scheduler},
+  author={N. Deshpande and Nathaniel Weiss},
+  year={2012}
+}
+
+@misc{McGuire2017Data,
+   title = {Computer Graphics Archive},
+   author = {Morgan McGuire},
+   year = {2017},
+   month = {July},
+   note = {\small \texttt{https://casual-effects.com/data}},
+   url = {https://casual-effects.com/data}
 }
 
 @article{chaitanya_interactive_2017,
@@ -163,6 +184,34 @@
 	pages = {12},
 }
 
+@ARTICLE{hou11bvh,  
+    author={Hou, Qiming and Sun, Xin and Zhou, Kun and Lauterbach, Christian and Manocha, Dinesh},  
+    journal={IEEE Transactions on Visualization and Computer Graphics},   
+    title={Memory-Scalable GPU Spatial Hierarchy Construction},   
+    year={2011},  
+    volume={17},  
+    number={4},  
+    pages={466-474},  
+    doi={10.1109/TVCG.2010.88}
+}
+
+@inproceedings{vinkler17morton,
+    author = {Vinkler, Marek and Bittner, Jiri and Havran, Vlastimil},
+    title = {Extended Morton Codes for High Performance Bounding Volume Hierarchy Construction},
+    year = {2017},
+    isbn = {9781450351010},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3105762.3105782},
+    doi = {10.1145/3105762.3105782},
+    booktitle = {Proceedings of High Performance Graphics},
+    articleno = {9},
+    numpages = {8},
+    keywords = {Morton codes, bounding volume hierarchy, ray tracing},
+    location = {Los Angeles, California},
+    series = {HPG '17}
+}
+
 @article{vinkler12visibility,
 	author = {Vinkler, Marek and Havran, Vlastimil and Sochor, Jiri},
 	year = {2012},
@@ -174,13 +223,22 @@
 	doi = {10.1016/j.cag.2012.02.013}
 }
 
+@article{havran06sahbin,
+    author = {Havran, Vlastimil and Herzog, Robert and Seidel, Hans-Peter},
+    year = {2006},
+    month = {09},
+    pages = {},
+    title = {On the Fast Construction of Spatial Data Structures for Ray Tracing},
+    journal = {Proceedings of the 2006 IEEE Symposium on Interactive Ray Tracing, IEEE, 71-80 (2006)},
+    doi = {10.1109/RT.2006.280217}
+}
+
 @article{macdonald_heuristics_1990,
 	title = {Heuristics for ray tracing using space subdivision},
 	volume = {6},
 	issn = {1432-2315},
 	url = {https://doi.org/10.1007/BF01911006},
 	doi = {10.1007/BF01911006},
-	abstract = {Ray tracing requires testing of many rays to determine intersections with objects. A way of reducing the computation is to organize objects into hierarchical data structures. We examine two heuristics for space subdivisions using bintrees, one based on the intuition that surface area is a good estimate of intersection probability, one based on the fact that the optimal splitting plane lies between the spatial median and the object median planes of a volume. Traversal algorithms using cross links between nodes are presented as generalizations of ropes in octrees. Simulations of the surface area heuristic and the cross link scheme are presented. These results generalize to other hierarchical data structures.},
 	number = {3},
 	journal = {The Visual Computer},
 	author = {MacDonald, J. David and Booth, Kellogg S.},
@@ -189,11 +247,31 @@
 	pages = {153--166},
 }
 
-@mastersthesis{macDonald1988space,
-  author       = {MacDonald, David}, 
-  title        = {Space Subdivision Algorithms for Ray Tracing},
-  school       = {University of Waterloo},
-  year         = {1988},
+@article{brunetti14cramersRule,
+  title={Old and New Proofs of Cramer's Rule},
+  author={M. Brunetti and R. Caccioppoli},
+  journal={Applied mathematical sciences},
+  year={2014},
+  volume={8},
+  pages={6689-6697}
+}
+
+@article{moeller97triangle,
+    author = { Tomas   M\"oller  and  Ben   Trumbore },
+    title = {Fast, Minimum Storage Ray-Triangle Intersection},
+    journal = {Journal of Graphics Tools},
+    volume = {2},
+    number = {1},
+    pages = {21-28},
+    year  = {1997},
+    publisher = {Taylor & Francis},
+    doi = {10.1080/10867651.1997.10487468},
+}
+
+@inproceedings{Greve2004ReflectionsAR,
+  title={Reflections and Refractions in Ray Tracing},
+  author={Bram de Greve},
+  year={2004}
 }
 
 @inproceedings{wu2011sahKdTree,
@@ -205,22 +283,20 @@
 	address = {New York, NY, USA},
 	url = {https://doi.org/10.1145/2018323.2018335},
 	doi = {10.1145/2018323.2018335},
-	abstract = {KD-tree is one of the most efficient acceleration data structures for ray tracing.
-	In this paper, we present a kd-tree construction algorithm that is precisely SAH-optimized
-	and runs entirely on GPU. We construct the tree nodes in breadth-first order. In order
-	to precisely evaluate the SAH cost, we design a parallel scheme based on the standard
-	parallel scan primitive to count the triangle numbers for all split candidates, and
-	a bucket-based algorithm to sort the AABBs (axis-aligned bounding box) of the clipped
-	triangles of the child nodes. The proposed parallel algorithms can be mapped well
-	to GPU's streaming architecture. The experiments showed that our algorithm can produce
-	the highest quality kd-tree as the off-line CPU algorithms, but runs faster than multi-core
-	CPU algorithms and the GPU SAH BVH-Tree algorithm.},
 	booktitle = {Proceedings of the ACM SIGGRAPH Symposium on High Performance Graphics},
 	pages = {71–78},
 	numpages = {8},
 	keywords = {ray tracing, parallel computing, KD-tree, GPU, surface area heuristic},
 	location = {Vancouver, British Columbia, Canada},
 	series = {HPG '11}
+}
+
+@book{haines2019,
+  title = {Ray Tracing Gems},
+  editor = {Eric Haines and Tomas Akenine-M\"oller},
+  publisher = {Apress},
+  year = {2019},
+  note ={\url{http://raytracinggems.com}},
 }
 
 @INPROCEEDINGS{hunt07lazybuild,  
@@ -234,11 +310,19 @@
 	doi={10.1109/RT.2007.4342590}
 }
 
+@article{sugerman09gramps,
+    author = {Sugerman, Jeremy and Fatahalian, Kayvon and Boulos, Solomon and Akeley, Kurt and Hanrahan, Pat},
+    year = {2009},
+    month = {01},
+    pages = {1-11},
+    title = {GRAMPS: A programming model for graphics pipelines},
+    volume = {28},
+    journal = {ACM Transactions on Graphics},
+    doi = {10.1145/1477926.1477930}
+}
+
 @inproceedings{choi2010sahKdTree,
 	title = "Parallel sah k-D tree construction",
-	abstract = "The k-D tree is a well-studied acceleration data structure for ray tracing. It is used to organize primitives in a scene to allow efficient execution of intersection operations between rays and the primitives. The highest quality k-D tree can be obtained using greedy cost optimization based on a surface area heuristc (SAH). While the high quality enables very fast ray tracing times, a key drawback is that the k-D tree construction time remains prohibitively expensive. This cost is unreasonable for rendering dynamic scenes for future visual computing applications on emerging multicore systems. Much work has therefore been focused on faster parallel k-D tree construction performance at the expense of approximating or ignoring SAH computation, which produces k-D trees that degrade rendering time. In this paper, we present two new parallel algorithms for building precise SAH-optimized k-D trees, with different tradeoffs between the total work done and parallel scalability. The algorithms achieve up to 8? speedup on 32 cores, without degrading tree quality and rendering time, yielding the best reported speedups so far for precise-SAH k-D tree construction.",
-	author = "Byn Choi and Rakesh Komuravelli and Victor Lu and Hyojin Sung and Bocchino, {Robert L.} and Adve, {Sarita V.} and Hart, {John C.}",
-	note = "Funding Information: Acknowledgments Thanks to Ingo Wald for helpful discussions. This work was funded by the Universal Parallel Computing Research Center at the University of Illinois at Urbana-Champaign. The Center is sponsored by Intel Corporation and Microsoft Corporation. Publisher Copyright: {\textcopyright} The Eurographics Association 2010.; 2nd ACM SIGGRAPH / Eurographics on High-Performance Graphics, HPG 2010 ; Conference date: 25-06-2010 Through 27-06-2010",
 	year = "2010",
 	month = jun,
 	day = "25",
@@ -251,31 +335,21 @@
 	booktitle = "High-Performance Graphics 2010 - ACM SIGGRAPH / Eurographics Symposium Proceedings, HPG 2010",
 }
 
-@article{hasselgren_neural_2020,
-	title = {Neural {Temporal} {Adaptive} {Sampling} and {Denoising}},
-	volume = {39},
-	issn = {0167-7055, 1467-8659},
-	url = {https://onlinelibrary.wiley.com/doi/10.1111/cgf.13919},
-	doi = {10.1111/cgf.13919},
-	abstract = {Despite recent advances in Monte Carlo path tracing at interactive rates, denoised image sequences generated with few samples per-pixel often yield temporally unstable results and loss of high-frequency details. We present a novel adaptive rendering method that increases temporal stability and image ﬁdelity of low sample count path tracing by distributing samples via spatio-temporal joint optimization of sampling and denoising. Adding temporal optimization to the sample predictor enables it to learn spatio-temporal sampling strategies such as placing more samples in disoccluded regions, tracking specular highlights, etc; adding temporal feedback to the denoiser boosts the effective input sample count and increases temporal stability. The temporal approach also allows us to remove the initial uniform sampling step typically present in adaptive sampling algorithms. The sample predictor and denoiser are deep neural networks that we co-train end-to-end over multiple consecutive frames. Our approach is scalable, allowing trade-off between quality and performance, and runs at near real-time rates while achieving signiﬁcantly better image quality and temporal stability than previous methods.},
-	language = {en},
-	number = {2},
-	urldate = {2021-05-05},
-	journal = {Computer Graphics Forum},
-	author = {Hasselgren, J. and Munkberg, J. and Salvi, M. and Patney, A. and Lefohn, A.},
-	month = may,
-	year = {2020},
-	pages = {147--155},
-}
-
-@article{kajiya_rendering_1986,
-	title = {{THE} {RENDERING} {EQUATION}},
-	volume = {20},
-	language = {en},
-	number = {4},
-	author = {Kajiya, James T},
-	year = {1986},
-	pages = {8},
+@inproceedings{li17parallelKD,
+    author = {Li, Zonghui and Deng, Yangdong and Gu, Ming},
+    title = {Path Compression Kd-Trees with Multi-Layer Parallel Construction a Case Study on Ray Tracing},
+    year = {2017},
+    isbn = {9781450348867},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3023368.3023382},
+    doi = {10.1145/3023368.3023382},
+    booktitle = {Proceedings of the 21st ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games},
+    articleno = {16},
+    numpages = {8},
+    keywords = {kd-tree, morton curve, path compression, multi-layer construction, ray tracing},
+    location = {San Francisco, California},
+    series = {I3D '17}
 }
 
 @article{fuchs1980bsp,
@@ -290,20 +364,6 @@
 	issn = {0097-8930},
 	url = {https://doi.org/10.1145/965105.807481},
 	doi = {10.1145/965105.807481},
-	abstract = {This paper describes a new algorithm for solving the hidden surface (or line) problem,
-	to more rapidly generate realistic images of 3-D scenes composed of polygons, and
-	presents the development of theoretical foundations in the area as well as additional
-	related algorithms. As in many applications the environment to be displayed consists
-	of polygons many of whose relative geometric relations are static, we attempt to capitalize
-	on this by preprocessing the environment's database so as to decrease the run-time
-	computations required to generate a scene. This preprocessing is based on generating
-	a “binary space partitioning” tree whose in order traversal of visibility priority
-	at run-time will produce a linear order, dependent upon the viewing position, on (parts
-	of) the polygons, which can then be used to easily solve the hidden surface problem.
-	In the application where the entire environment is static with only the viewing-position
-	changing, as is common in simulation, the results presented will be sufficient to
-	solve completely the hidden surface problem.},
-	journal = {SIGGRAPH Comput. Graph.},
 	month = jul,
 	pages = {124–133},
 	numpages = {10}
@@ -315,7 +375,6 @@
 	issn = {0001-0782, 1557-7317},
 	url = {https://dl.acm.org/doi/10.1145/360349.360354},
 	doi = {10.1145/360349.360354},
-	abstract = {The geometric structure inherent in the definition of the shapes of three-dimensional objects and environments is used not just to define their relative motion and placement, but also to assist in solving many other problems of systems for producing pictures by computer. By using an extension of traditional structure information, or a geometric hierarchy, five significant improvements to current techniques are possible. First, the range of complexity of an environment is greatly increased while the visible complexity of any given scene is kept within a fixed upper limit. Second, a meaningful way is provided to vary the amount of detail presented in a scene. Third, “clipping” becomes a very fast logarithmic search for the resolvable parts of the environment within the field of view. Fourth, frame to frame coherence and clipping define a graphical “working set,” or fraction of the total structure that should be present in primary store for immediate access by the visible surface algorithm. Finally, the geometric structure suggests a recursive descent, visible surface algorithm in which the computation time potentially grows linearly with the visible complexity of the scene.},
 	language = {en},
 	number = {10},
 	urldate = {2021-05-04},
@@ -326,22 +385,12 @@
 	pages = {547--554},
 }
 
-@article{zeng_temporally_2021,
-	title = {Temporally {Reliable} {Motion} {Vectors} for {Real}-time {Ray} {Tracing}},
-	abstract = {Real-time ray tracing (RTRT) is being pervasively applied. The key to RTRT is a reliable denoising scheme that reconstructs clean images from signiﬁcantly undersampled noisy inputs, usually at 1 sample per pixel as limited by current hardware’s computing power. The state of the art reconstruction methods all rely on temporal ﬁltering to ﬁnd correspondences of current pixels in the previous frame, described using per-pixel screen-space motion vectors. While these approaches are demonstrated powerful, they suffer from a common issue that the temporal information cannot be used when the motion vectors are not valid, i.e. when temporal correspondences are not obviously available or do not exist in theory.},
-	language = {en},
-	author = {Zeng, Zheng and Liu, Shiqiu and Yang, Jinglei and Wang, Lu and Yan, Ling-Qi},
-	year = {2021},
-	pages = {12},
-}
-
 @article{cook_distributed_1984,
 	title = {Distributed ray tracing},
 	volume = {18},
 	issn = {0097-8930},
 	url = {https://doi.org/10.1145/964965.808590},
 	doi = {10.1145/964965.808590},
-	abstract = {Ray tracing is one of the most elegant techniques in computer graphics. Many phenomena that are difficult or impossible with other techniques are simple with ray tracing, including shadows, reflections, and refracted light. Ray directions, however, have been determined precisely, and this has limited the capabilities of ray tracing. By distributing the directions of the rays according to the analytic function they sample, ray tracing can incorporate fuzzy phenomena. This provides correct and easy solutions to some previously unsolved or partially solved problems, including motion blur, depth of field, penumbras, translucency, and fuzzy reflections. Motion blur and depth of field calculations can be integrated with the visible surface calculations, avoiding the problems found in previous methods.},
 	number = {3},
 	urldate = {2021-05-04},
 	journal = {ACM SIGGRAPH Computer Graphics},
@@ -354,12 +403,21 @@
 
 @article{schied_spatiotemporal_2017,
 	title = {Spatiotemporal {Variance}-{Guided} {Filtering}: {Real}-{Time} {Reconstruction} for {Path}-{Traced} {Global} {Illumination}},
-	abstract = {We introduce a reconstruction algorithm that generates a temporally stable sequence of images from one path-per-pixel global illumination. To handle such noisy input, we use temporal accumulation to increase the e ective sample count and spatiotemporal luminance variance estimates to drive a hierarchical, image-space wavelet lter [Dammertz et al. 2010]. is hierarchy allows us to distinguish between noise and detail at multiple scales using local luminance variance.},
 	language = {en},
 	journal = {Los Angeles},
 	author = {Schied, Christoph and Kaplanyan, Anton and Wyman, Chris and Patney, Anjul and Chaitanya, Chakravarty R Alla and Burgess, John and Liu, Shiqiu and Dachsbacher, Carsten and Lefohn, Aaron and Salvi, Marco},
 	year = {2017},
 	pages = {12},
+}
+
+@techreport{yan14denoising,
+    Author = {Yan, Ling-Qi and Uday Mehta, Soham and Ramamoorthi, Ravi and Durand, Fredo},
+    Title = {Fast 4D Sheared Filtering for Interactive Rendering of Distribution Effects},
+    Institution = {EECS Department, University of California, Berkeley},
+    Year = {2014},
+    Month = {Oct},
+    URL = {http://www2.eecs.berkeley.edu/Pubs/TechRpts/2014/EECS-2014-174.html},
+    Number = {UCB/EECS-2014-174}
 }
 
 @inproceedings{mara17towards,
@@ -373,7 +431,6 @@
     isbn = "978-1-4503-5101-0",
     location = "Los Angeles, California, USA",
     doi = "10/gfzndq",
-    abstract = "We propose a hybrid ray-tracing/rasterization strategy for real- time rendering enabled by a fast new denoising method. We factor global illumination into direct light at rasterized primary surfaces and two indirect lighting terms, each estimated with one path- traced sample per pixel. Our factorization enables efficient (biased) reconstruction by denoising light without blurring materials. We demonstrate denoising in under 10 ms per 1280×720 frame, compare results against the leading offline denoising methods, and include a supplement with source code, video, and data."
 }
 
 @article{morton66curve,
@@ -394,7 +451,6 @@
 	doi = {https://doi.org/10.1111/j.1467-8659.2009.01377.x},
 	url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-8659.2009.01377.x},
 	eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-8659.2009.01377.x},
-	abstract = {Abstract We present two novel parallel algorithms for rapidly constructing bounding volume hierarchies on manycore GPUs. The first uses a linear ordering derived from spatial Morton codes to build hierarchies extremely quickly and with high parallel scalability. The second is a top-down approach that uses the surface area heuristic (SAH) to build hierarchies optimized for fast ray tracing. Both algorithms are combined into a hybrid algorithm that removes existing bottlenecks in the algorithm for GPU construction performance and scalability leading to significantly decreased build time. The resulting hierarchies are close in to optimized SAH hierarchies, but the construction process is substantially faster, leading to a significant net benefit when both construction and traversal cost are accounted for. Our preliminary results show that current GPU architectures can compete with CPU implementations of hierarchy construction running on multicore systems. In practice, we can construct hierarchies of models with up to several million triangles and use them for fast ray tracing or other applications.},
 	year = {2009}
 }
 
@@ -405,18 +461,10 @@
 	isbn = {9783905674415},
 	publisher = {Eurographics Association},
 	address = {Goslar, DEU},
-	abstract = {A number of methods for constructing bounding volume hierarchies and point-based octrees
-	on the GPU are based on the idea of ordering primitives along a space-filling curve.
-	A major shortcoming with these methods is that they construct levels of the tree sequentially,
-	which limits the amount of parallelism that they can achieve. We present a novel approach
-	that improves scalability by constructing the entire tree in parallel. Our main contribution
-	is an in-place algorithm for constructing binary radix trees, which we use as a building
-	block for other types of trees.},
 	booktitle = {Proceedings of the Fourth ACM SIGGRAPH / Eurographics Conference on High-Performance Graphics},
 	pages = {33–37},
 	numpages = {5},
 	location = {Paris, France},
-	series = {EGGH-HPG'12}
 }
 
 @article{Walter2008FastAC,
@@ -459,39 +507,6 @@
 	doi = {10.1145/1572769.1572772}
 }
 
-@article{schied_gradient_2018,
-	title = {Gradient {Estimation} for {Real}-time {Adaptive} {Temporal} {Filtering}},
-	volume = {1},
-	issn = {2577-6193},
-	url = {https://dl.acm.org/doi/10.1145/3233301},
-	doi = {10.1145/3233301},
-	abstract = {With the push towards physically based rendering, stochastic sampling of shading, e.g. using path tracing, is becoming increasingly important in real-time rendering. To achieve high performance, only low sample counts are viable, which necessitates the use of sophisticated reconstruction filters. Recent research on such filters has shown dramatic improvements in both quality and performance. They exploit the coherence of consecutive frames by reusing temporal information to achieve stable, denoised results. However, existing temporal filters often create objectionable artifacts such as ghosting and lag. We propose a novel temporal filter which analyzes the signal over time to derive adaptive temporal accumulation factors per pixel. It repurposes a subset of the shading budget to sparsely sample and reconstruct the temporal gradient. This allows us to reliably detect sudden changes of the sampled signal and to drop stale history information. We create gradient samples through forward-projection of surface samples from the previous frame into the current frame and by reevaluating the shading samples using the same random sequence. We apply our filter to improve real-time path tracers. Compared to previous work, we show a significant reduction of lag and ghosting as well as improved temporal stability. Our temporal filter runs in 2 ms at 1080p on modern graphics hardware and can be integrated into deferred renderers.},
-	language = {en},
-	number = {2},
-	urldate = {2021-05-04},
-	journal = {Proceedings of the ACM on Computer Graphics and Interactive Techniques},
-	author = {Schied, Christoph and Peters, Christoph and Dachsbacher, Carsten},
-	month = aug,
-	year = {2018},
-	pages = {1--16},
-}
-
-@article{bako_kernel-predicting_2017,
-	title = {Kernel-predicting convolutional networks for denoising {Monte} {Carlo} renderings},
-	volume = {36},
-	issn = {0730-0301, 1557-7368},
-	url = {https://dl.acm.org/doi/10.1145/3072959.3073708},
-	doi = {10.1145/3072959.3073708},
-	language = {en},
-	number = {4},
-	urldate = {2021-05-04},
-	journal = {ACM Transactions on Graphics},
-	author = {Bako, Steve and Vogels, Thijs and Mcwilliams, Brian and Meyer, Mark and NováK, Jan and Harvill, Alex and Sen, Pradeep and Derose, Tony and Rousselle, Fabrice},
-	month = jul,
-	year = {2017},
-	pages = {1--14},
-}
-
 @article{koskela2019bmfr,
 	author = {Koskela, Matias and Immonen, Kalle and M\"{a}kitalo, Markku and Foi, Alessandro and Viitanen, Timo and J\"{a}\"{a}skel\"{a}inen, Pekka and Kultala, Heikki and Takala, Jarmo},
 	title = {Blockwise Multi-Order Feature Regression for Real-Time Path-Tracing Reconstruction},
@@ -504,20 +519,6 @@
 	issn = {0730-0301},
 	url = {https://doi.org/10.1145/3269978},
 	doi = {10.1145/3269978},
-	abstract = {Path tracing produces realistic results including global illumination using a unified
-	simple rendering pipeline. Reducing the amount of noise to imperceptible levels without
-	post-processing requires thousands of samples per pixel (spp), while currently it
-	is only possible to render extremely noisy 1 spp frames in real time with desktop
-	GPUs. However, post-processing can utilize feature buffers, which contain noise-free
-	auxiliary data available in the rendering pipeline. Previously, regression-based noise
-	filtering methods have only been used in offline rendering due to their high computational
-	cost. In this article we propose a novel regression-based reconstruction pipeline,
-	called Blockwise Multi-Order Feature Regression (BMFR), tailored for path-traced 1
-	spp inputs that runs in real time. The high speed is achieved with a fast implementation
-	of augmented QR factorization and by using stochastic regularization to address rank-deficient
-	feature data. The proposed algorithm is 1.8\texttimes{} faster than the previous state-of-the-art
-	real-time path-tracing reconstruction method while producing better quality frame
-	sequences.},
 	journal = {ACM Trans. Graph.},
 	month = jun,
 	articleno = {138},
@@ -525,48 +526,53 @@
 	keywords = {reconstruction, Path tracing, regression, real-time}
 }
 
-@inproceedings{karras_fast_2013,
-	address = {New York, NY, USA},
-	series = {{HPG} '13},
-	title = {Fast parallel construction of high-quality bounding volume hierarchies},
-	isbn = {978-1-4503-2135-8},
-	url = {https://doi.org/10.1145/2492045.2492055},
-	doi = {10.1145/2492045.2492055},
-	abstract = {We propose a new massively parallel algorithm for constructing high-quality bounding volume hierarchies (BVHs) for ray tracing. The algorithm is based on modifying an existing BVH to improve its quality, and executes in linear time at a rate of almost 40M triangles/sec on NVIDIA GTX Titan. We also propose an improved approach for parallel splitting of triangles prior to tree construction. Averaged over 20 test scenes, the resulting trees offer over 90\% of the ray tracing performance of the best offline construction method (SBVH), while previous fast GPU algorithms offer only about 50\%. Compared to state-of-the-art, our method offers a significant improvement in the majority of practical workloads that need to construct the BVH for each frame. On the average, it gives the best overall performance when tracing between 7 million and 60 billion rays per frame. This covers most interactive applications, product and architectural design, and even movie rendering.},
-	urldate = {2021-05-04},
-	booktitle = {Proceedings of the 5th {High}-{Performance} {Graphics} {Conference}},
-	publisher = {Association for Computing Machinery},
-	author = {Karras, Tero and Aila, Timo},
-	month = jul,
-	year = {2013},
-	keywords = {bounding volume hierarchies, ray tracing},
-	pages = {89--99},
-}
-
-@inproceedings{karras_maximizing_2012,
-	address = {Goslar, DEU},
-	series = {{EGGH}-{HPG}'12},
-	title = {Maximizing parallelism in the construction of {BVHs}, octrees, and \textit{k}-d trees},
-	isbn = {978-3-905674-41-5},
-	abstract = {A number of methods for constructing bounding volume hierarchies and point-based octrees on the GPU are based on the idea of ordering primitives along a space-filling curve. A major shortcoming with these methods is that they construct levels of the tree sequentially, which limits the amount of parallelism that they can achieve. We present a novel approach that improves scalability by constructing the entire tree in parallel. Our main contribution is an in-place algorithm for constructing binary radix trees, which we use as a building block for other types of trees.},
-	urldate = {2021-05-04},
-	booktitle = {Proceedings of the {Fourth} {ACM} {SIGGRAPH} / {Eurographics} conference on {High}-{Performance} {Graphics}},
-	publisher = {Eurographics Association},
-	author = {Karras, Tero},
-	month = jun,
-	year = {2012},
-	pages = {33--37},
-}
-
 @article{chitalu20lbvh,
 	author = {Chitalu, Floyd and Dubach, Christophe and Komura, Taku},
 	year = {2020},
 	month = {05},
 	pages = {509-521},
-	title = {Binary Ostensibly‐Implicit Trees for Fast Collision Detection},
+	title = {Binary Ostensibly-Implicit Trees for Fast Collision Detection},
 	volume = {39},
 	journal = {Computer Graphics Forum},
 	doi = {10.1111/cgf.13948}
+}
+
+@misc{raytracingFigure,
+    author = {Timrb},
+    title = {Ray Trace Diagram},
+    year = {2008},
+    publisher = {Wikimedia},
+    howpublished = {\url{https://commons.wikimedia.org/wiki/File:Ray_trace_diagram.png}},
+    note = {Published under the CC BY-SA 3.0 license}
+}
+
+@misc{ou19bo,
+  author = {Changkun Ou},
+  title = {bo},
+  year = {2019},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/changkun/bo}},
+  note = {Open sourced under MIT license on GitHub, 2019. Last access 2021-01-09, master branch, commit hash  9260b3ccfc857748c9996e7bf373fe8730eea168}
+}
+
+@misc{ou20bench,
+  author = {Changkun Ou},
+  title = {bench},
+  year = {2020},
+  version = {0.1.2},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/golang-design/bench}},
+  note = {Open sourced under GPL-3.0 license on GitHub, 2020. Last access 2021-01-09, master branch, commit hash ee8e327ca74084d890dd11aad7856b232e95a308}
+}
+
+@misc{ou20pointer,
+    title = {Pointers Might Not be Ideal as Arguments},
+    author = {Changkun Ou},
+    year = {2020},
+    url = {https://golang.design/research/pointer-params/},
+    note = {Last access 2021-05-09},
 }
 
 @article{meister21survey,
@@ -603,29 +609,21 @@
 	title = {Ray {Tracing} {Deformable} {Scenes} using {Dynamic} {Bounding} {Volume} {Hierarchies}},
 	volume = {26},
 	doi = {10.1145/1189762.1206075},
-	abstract = {The most significant deficiency of most of today's interactive ray tracers is that they are restricted to static walkthroughs. This restriction is due to the static nature of the acceleration structures used. While the best reported frame rates for static geometric models have been achieved using carefully constructed kd-trees, this article shows that bounding volume hierarchies (BVHs) can be used to efficiently ray trace large static models.More importantly, the BVH can be used to ray trace deformable models (sets of triangles whose positions change over time) with little loss of performance. A variety of efficiency techniques are used to achieve this performance, but three algorithmic changes to the typical BVH algorithm are mainly responsible. First, the BVH is built using a variant of the surface area heuristic conventionally used to build kd-trees. Second, the topology of the BVH is not changed over time so that only the bounding volumes need to be refit from frame-to-frame. Third, and most importantly, packets of rays are traced together through the BVH using a novel integrated packet-frustum traversal scheme. This traversal scheme elegantly combines the advantages of both packet traversal and frustum traversal and allows for rapid hierarchy descent for packets that hit bounding volumes as well as rapid exits for packets that miss. A BVH-based ray tracing system using these techniques is shown to achieve performance for deformable models comparable to that previously available only for static models.},
 	journal = {ACM Trans. Graph.},
 	author = {Wald, Ingo and Boulos, Solomon and Shirley, Peter},
 	month = jan,
 	year = {2007},
 }
 
-@inproceedings{vinkler_bounding_2014,
-	address = {New York, NY, USA},
-	series = {{SCCG} '14},
-	title = {Bounding volume hierarchies versus kd-trees on contemporary many-core architectures},
-	isbn = {978-1-4503-3070-1},
-	url = {https://doi.org/10.1145/2643188.2643196},
-	doi = {10.1145/2643188.2643196},
-	abstract = {We present a performance comparison of bounding volume hierarchies and kd-trees for ray tracing on many-core architectures (GPUs). The comparison is focused on rendering times and traversal characteristics on the GPU using data structures that were optimized for maximum performance of tracing rays irrespective of the time needed for their build. We show that for a contemporary GPU architecture (NVIDIA Kepler) bounding volume hierarchies have higher ray tracing performance than kd-trees for simple and moderately complex scenes. Kd-trees, on the other hand, have higher performance for complex scenes, in particular for those with occlusion.},
-	urldate = {2021-05-04},
-	booktitle = {Proceedings of the 30th {Spring} {Conference} on {Computer} {Graphics}},
-	publisher = {Association for Computing Machinery},
-	author = {Vinkler, Marek and Havran, Vlastimil and Bittner, Jiří},
-	month = may,
-	year = {2014},
-	keywords = {bounding volume hierarchy, kd-tree, performance study, ray tracing},
-	pages = {29--36},
+@INPROCEEDINGS{wald08multibvh,  
+    author={Wald, Ingo and Benthin, Carsten and Boulos, Solomon},  
+    booktitle={2008 IEEE Symposium on Interactive Ray Tracing},   
+    title={Getting rid of packets - Efficient SIMD single-ray traversal using multi-branching BVHs -},   
+    year={2008},  
+    volume={},  
+    number={},  
+    pages={49-57},  
+    doi={10.1109/RT.2008.4634620}
 }
 
 @article{goldsmith_automatic_1987,
@@ -634,7 +632,6 @@
 	issn = {0272-1716},
 	url = {https://doi.org/10.1109/MCG.1987.276983},
 	doi = {10.1109/MCG.1987.276983},
-	abstract = {Intersection calculations dominate the run time of canonical ray tracers. A common algorithm to reduce the number of intersection tests required is the intersection of rays with a tree of extents, rather than the whole database of objects. A shortcoming of this method is that these trees are difficult to generate. Additionally, manually generated trees can be poor, greatly reducing the run-time improvement available. We present methods for evaluation of these trees in approximate number of intersection calculations required and for automatic generation of good trees. These methods run in O(nlogn) expected time where n is the number of objects in the scene. We report some examples of speedups.},
 	number = {5},
 	urldate = {2021-05-04},
 	journal = {IEEE Computer Graphics and Applications},
@@ -644,37 +641,27 @@
 	pages = {14--20},
 }
 
-@article{kay_ray_1986,
-	title = {Ray tracing complex scenes},
-	volume = {20},
-	issn = {0097-8930},
-	url = {https://doi.org/10.1145/15886.15916},
-	doi = {10.1145/15886.15916},
-	abstract = {A new algorithm for speeding up ray-object intersection calculations is presented. Objects are bounded by a new type of extent, which can be made to fit convex hulls arbitrarily tightly. The objects are placed into a hierarchy. A new hierarchy traversal algorithm is presented which is efficient in the sense that objects along the ray are queried in an efficient order.Results are presented which demonstrate that our technique is several times faster than other published algorithms. Furthermore, we demonstrate that it is currently possible to ray trace scenes containing hundreds of thousands of objects.},
-	number = {4},
-	urldate = {2021-05-04},
-	journal = {ACM SIGGRAPH Computer Graphics},
-	author = {Kay, Timothy L. and Kajiya, James T.},
-	month = aug,
-	year = {1986},
-	pages = {269--278},
+@inproceedings{pantaleoni10hlbvh,
+    author = {Pantaleoni, J. and Luebke, D.},
+    title = {HLBVH: Hierarchical LBVH Construction for Real-Time Ray Tracing of Dynamic Geometry},
+    year = {2010},
+    publisher = {Eurographics Association},
+    address = {Goslar, DEU},
+    booktitle = {Proceedings of the Conference on High Performance Graphics},
+    pages = {87–95},
+    numpages = {9},
+    location = {Saarbrucken, Germany},
+    series = {HPG '10}
 }
 
-@article{rubin_3-dimensional_1980,
-	title = {A 3-dimensional representation for fast rendering of complex scenes},
-	volume = {14},
-	issn = {0097-8930},
-	url = {https://doi.org/10.1145/965105.807479},
-	doi = {10.1145/965105.807479},
-	abstract = {Hierarchical representations of 3-dimensional objects are both time and space efficient. They typically consist of trees whose branches represent bounding volumes and whose terminal nodes represent primitive object elements (usually polygons). This paper describes a method whereby the object space is represented entirely by a hierarchical data structure consisting of bounding volumes, with no other form of representation. This homogencity allows the visible surface rendering to be performed simply and efficiently. The bounding volumes selected for this algorithm are parallelepipeds oriented to minimize their size. With this representation, any surface can be rendered since in the limit the bounding volumes make up a point representation of the object. The advantage is that the visibility calculations consist only of a search through the data structure to determine the correspondence between terminal level bounding volumes and the current pixel. For ray tracing algorithms, this means that a simplified operation will produce the point of intersection of each ray with the bounding volumes. Memory requirements are minimized by expanding or fetching the lower levels of the hierarchy only when required. Because the viewing process has a single operation and primitive type, the software or hardware chosen to implement the search can be highly optimized for very fast execution.},
-	number = {3},
-	urldate = {2021-05-04},
-	journal = {ACM SIGGRAPH Computer Graphics},
-	author = {Rubin, Steven M. and Whitted, Turner},
-	month = jul,
-	year = {1980},
-	keywords = {Computer graphics, Hierarchical data structures, Object descriptions, Visible surface algorithms},
-	pages = {110--116},
+@inproceedings{garanzha11hlbvh,
+    author = {Garanzha, Kirill and Pantaleoni, Jacopo and McAllister, David},
+    year = {2011},
+    month = {08},
+    pages = {59-64},
+    title = {Simpler and faster HLBVH with work queues},
+    journal = {Proceedings of the Conference on High Performance Graphics 2011},
+    doi = {10.1145/2018323.2018333}
 }
 
 @article{clark_hierarchical_1976-1,
@@ -683,7 +670,6 @@
 	issn = {0001-0782},
 	url = {https://doi.org/10.1145/360349.360354},
 	doi = {10.1145/360349.360354},
-	abstract = {The geometric structure inherent in the definition of the shapes of three-dimensional objects and environments is used not just to define their relative motion and placement, but also to assist in solving many other problems of systems for producing pictures by computer. By using an extension of traditional structure information, or a geometric hierarchy, five significant improvements to current techniques are possible. First, the range of complexity of an environment is greatly increased while the visible complexity of any given scene is kept within a fixed upper limit. Second, a meaningful way is provided to vary the amount of detail presented in a scene. Third, “clipping” becomes a very fast logarithmic search for the resolvable parts of the environment within the field of view. Fourth, frame to frame coherence and clipping define a graphical “working set,” or fraction of the total structure that should be present in primary store for immediate access by the visible surface algorithm. Finally, the geometric structure suggests a recursive descent, visible surface algorithm in which the computation time potentially grows linearly with the visible complexity of the scene.},
 	number = {10},
 	urldate = {2021-05-04},
 	journal = {Communications of the ACM},
@@ -700,7 +686,6 @@
 	issn = {1558-1756},
 	shorttitle = {{ARTS}},
 	doi = {10.1109/MCG.1986.276715},
-	abstract = {In this article we propose algorithms that address the two basic problems encountered in generating continuous-tone images by ray tracing: speed and aliasing. We examine previous approaches to the problem and then propose a scheme based on the coherency of an auxiliary data structure imposed on the original object domain. After investigating both simple spatial enumeration and a hybrid octree approach, we developed 3DDDA, a 3D line generator for efficient traversing of both structures. 3DDDA provides an order of magnitude improvement in processing speed compared to other known ray-tracing methods. Processing time is found to be virtually independent of the number of objects involved in the scene. For large numbers of objects, this method actully becomes faster than scan-line methods. To remove jags from edges, a scheme for identifying edge orientation and distance from pixel center to true edge has been implemented. The time required for antialiasing depends on the total length of the edges encountered, but it is normally only a fractional addition to the time needed to produce the scene without antialiasing.},
 	number = {4},
 	journal = {IEEE Computer Graphics and Applications},
 	author = {Fujimoto, Akira and Tanaka, Takayuki and Iwata, Kansei},
@@ -725,7 +710,6 @@
 	volume = {4},
 	issn = {1558-1756},
 	doi = {10.1109/MCG.1984.6429331},
-	abstract = {An algorithm is described that speeds up ray-tracing techniques by reducing the number of time-consuming object-ray intersection calculations that have to be made. The algorithm is based on subdividing space into an octree, associating a given voxel with only those objects whose surfaces pass through the volume of the voxel. It includes a technique for obtaining fast access to any node and a mechanism for finding the next node intersected by a ray when it has hit nothing in the current node. This new algorithm makes possible the ray tracing of complex scenes by medium-scale and small-scale computers.},
 	number = {10},
 	journal = {IEEE Computer Graphics and Applications},
 	author = {Glassner, Andrew S.},
@@ -736,41 +720,12 @@
 	pages = {15--24},
 }
 
-@article{veach_bidirectional_1995,
-	title = {Bidirectional {Estimators} for {Light} {Transport}},
-	issn = {978-3-642-87827-5},
-	doi = {10.1007/978-3-642-87825-1_11},
-	abstract = {Most of the research on the global illumination problem in computer graphics has been concentrated on finite-element (radiosity) techniques. Monte Carlo methods are an intriguing alternative which are attractive for their ability to handle very general scene descriptions without the need for meshing. In this paper we study techniques for reducing the sampling noise inherent in pure Monte Carlo approaches to global illumination. Every light energy transport path from a light source to the eye can be generated in a number of different ways, according to how we partition the path into an initial portion traced from a light source, and a final portion traced from the eye. Each partitioning gives us a different unbiased estimator, but some partitionings give estimators with much lower variance than others. We give examples of this phenomenon and describe its significance. We also present work in progress on the problem of combining these multiple estimators to achieve near-optimal variance, with the goal of producing images with less noise for a given number of samples.},
-	journal = {Proceedings of Eurographics Workshop on Rendering},
-	author = {Veach, Eric and Guibas, Leonidas},
-	month = jan,
-	year = {1995},
-}
-
-@article{lafortune_bi-directional_1998,
-	title = {Bi-{Directional} {Path} {Tracing}},
-	volume = {93},
-	abstract = {In this paper we present a new Monte Carlo rendering algorithm that seamlessly integrates},
-	journal = {Proceedings of Third International Conference on Computational Graphics and Visualization Techniques (Compugraphics'},
-	author = {Lafortune, Eric and Willems, Yves},
-	month = jan,
-	year = {1998},
-}
-
-@inproceedings{kajiya_rendering_1986-1,
-	address = {New York, NY, USA},
-	series = {{SIGGRAPH} '86},
-	title = {The rendering equation},
-	isbn = {978-0-89791-196-2},
-	url = {https://doi.org/10.1145/15922.15902},
-	doi = {10.1145/15922.15902},
-	abstract = {We present an integral equation which generalizes a variety of known rendering algorithms. In the course of discussing a monte carlo solution we also present a new form of variance reduction, called Hierarchical sampling and give a number of elaborations shows that it may be an efficient new technique for a wide variety of monte carlo procedures. The resulting rendering algorithm extends the range of optical phenomena which can be effectively simulated.},
-	urldate = {2021-05-04},
-	booktitle = {Proceedings of the 13th annual conference on {Computer} graphics and interactive techniques},
-	publisher = {Association for Computing Machinery},
-	author = {Kajiya, James T.},
-	month = aug,
+@article{kajiya_rendering_1986,
+	title = {{THE} {RENDERING} {EQUATION}},
+	volume = {20},
+	language = {en},
+	number = {4},
+	author = {Kajiya, James T},
 	year = {1986},
-	pages = {143--150},
+	pages = {8},
 }
-

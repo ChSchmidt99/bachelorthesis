@@ -1,6 +1,15 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage{theme/lmuthesis}
-\usepackage{glossaries}
+\usepackage{svg}
+\usepackage{algorithm2e}
+\usepackage{multicol}
+\DontPrintSemicolon
+\usepackage[acronym]{glossaries}
+
+\graphicspath{images/}
+
+\input{src/glossaries}
+\makeglossaries
 
 % this for draft water mark
 \input{condition}
@@ -19,38 +28,76 @@
 \title{Progressive BVH Refinement in Interactive Ray Tracing}
 \author{Christian Schmidt}
 \email{nichtchristianschmidt@gmail.com}
-\bearbeitungszeitraum{06.05.2021 bis END}
+% TODO: Fill out END
+\bearbeitungszeitraum{06.05.2021 bis 23.09.2021}
 \supervisor{Changkun Ou}
 \taskdescription{
+    % TODO: Format description
     \begin{description}
         \item[Progressive BVH Refinement in Interactive Ray Tracing]
-        \item[Problem Statement] Path tracing in real time become avaliable on the GPU side in recent years due to the recent advances in image denoising techniques, such as NVIDIA DLSS.
+        \item[Problem Statement] 
+        Path tracing in real time become avaliable on the GPU side in recent years due to the recent advances in image denoising techniques, such as NVIDIA DLSS.
 
         It is interesting to optimize and render everything directly on the CPU in real time for reasonably smaller scenes.
         \item[Tasks]
-        - Implement a multi-threaded CPU ray tracer
-        - Profile and identify the bottleneck of your ray tracer implementation
-        - Benchmark and compare the performance difference between your CPU ray tracer and an equivalent CUDA ray tracer
-        - Summarize your findings in a thesis and presenting them to audiences
+        \begin{itemize}
+            \item Implement a multi-threaded CPU ray tracer
+            \item Profile and identify the bottleneck of your ray tracer implementation
+            \item Benchmark and compare the performance difference between your CPU ray tracer and an equivalent CUDA ray tracer
+            \item Summarize your findings in a thesis and presenting them to audiences
+        \end{itemize}
         \item[Requirements]
-        - Have experience or projects using C++ (or Go)
-        - General knowledge about computer graphics
+        \begin{itemize}
+            \item Have experience or projects using C++ (or Go)
+            \item General knowledge about computer graphics
+        \end{itemize}
     \end{description}
 }
 \acknoledgement{
-    I would like to appreciate ...
-    % TODO: Thank Changkun for help and provided frameworks
+    The meshes used to evaluate the path tracer are courtesy of Morgan McGuire's Computer Graphics Archive\cite{McGuire2017Data} and the Standford 3D Scanning Repository. 
+    I would like to thank my advisor Chankun Ou for his patience and for all his feedback and input in countless meetings. 
+    His contributions in the form of the bench\cite{ou20bench} framework and a Bayesian optimizer\cite{ou19bo} helped my work significantly.
+    Finally, I would like to thank my CPU for taking quite the beating in several benchmarking and rendering sessions. 
 }
 \abstract{
-    This thesis proposes ...
+    Path tracing is a rendering technique that simulates how light travels through a scene, producing physically correct images, albeit at a significant computational cost. Only in recent years has this technology become viable in real-time rendering through powerful denoising techniques and special purpose hardware. This thesis continues this work by first presenting a self-contained overview over the basics of path tracing. A closer look at CPU based interactive path tracing is provided and its performance is evaluated based on a path tracer written from scratch in Go. A particular focus is set on acceleration data structures, which are used to optimize the ray tracing process significantly. Consequently, the state-of-the-art bounding volume hierarchy construction algorithm called progressive hierarchical refinement is presented and applied to the interactive application. Finally, a novel approach for evaluating the build-trace trade-off of that algorithm is proposed and the optimization problem is solved using grid search and Bayesian optimization.
+    \\
+    \\
+    \\
+    \\
+    \\
+    \\
+    \\
+    \\
+    Path Tracing ist eine Technik zur Bildsynthese, welche den Lichttransport durch eine Szene simuliert. Dadurch werden physikalisch plausible Bilder erzeugt, wenn auch auf Kosten eines hohen Rechenaufwands. Erst in den letzten Jahren wurde diese Technologie auch im Real-Time Rendering realisierbar, vor allem durch leistungsstarke Rauschunterdr{\"u}ckungsverfahren und spezielle Hardware. Diese Arbeit kn{\"u}pft an diese Fortschritte an, indem zun{\"a}chst ein in sich geschlossener {\"U}berblick {\"u}ber die Grundlagen des Path Tracing pr{\"a}sentiert wird. Anschlie{\ss}end wird CPU basiertes interaktives Path Tracing n{\"a}her betrachtet und dessen Leistung basierend auf einem in Go von Grund auf neu geschriebenen Path Tracer evaluiert. Ein besonderer Fokus liegt auf Datenstrukturen, die der Beschleunigung des Ray Tracing Prozesses dienen. Im Zuge dessen wird der Algorithmus "Progressive Hierarchical Refinement", welcher zur Konstruktion von Bounding Volume Hierarchien dient und dem neusten Stand der Technik entspricht, vorgestellt und in die interaktive Applikation integriert. Zuletzt wird ein neuer Ansatz zur Evaluierung des Konstruktion-Render-Ausgleichs des Algorithmus vorgeschlagen und das Optimierungsproblem durch Rastersuche und Bayessche Optimierung gel{\"o}st.
+}
+
+\notation{
+    Here the notation used throughout this thesis is described. Vectors are denoted by bold lowercase letters, e.g. \textbf{v} and matricies by bold upper case letters, e.g. \textbf{M}. Scalars are lowercase, italicized letters, e.g. $c$. Points are uppercase, e.g. $P$. The components of a vector are accessed as 
+    \[
+        \textbf{v}  = \left[ \begin{array}{r}v_x\\v_y\\v_z\end{array} \right]
+                    = \left[ \begin{array}{r}v_0\\v_1\\v_2\end{array} \right]
+                    = \left[ \begin{array}{rrr}v_x&v_y&v_z\end{array} \right]^\top
+    \]
+    where the latter shows the vector transposed, i.e. a column becomes a row. The dot product between to vectors is written as $a\cdot b$. \\\\A matrix \textbf{M} can be written in the following ways:
+    \[
+        \textbf{M}  = \left[ \begin{array}{rrr}
+                            m_{00} & m_{01} & m_{02}\\
+                            m_{10} & m_{11} & m_{12}\\
+                            m_{20} & m_{21} & m_{22}
+                        \end{array} \right]
+                    = \left[ \begin{array}{rrr} \textbf{m}_0 & \textbf{m}_1 & \textbf{m}_2\end{array} \right]
+    \]
+    where \textbf{m}$_i, i\in\{0,1,2\}$, are the column vectors of the matrix.
+    
 }
 
 \begin{document}
-
 \makecover
 \maketaskdescription
 \makededication
 \makeabstract
+\makenotation
 \maketoc
 % optional:
 % \listoffigures
@@ -59,10 +106,14 @@
 \input{src/ch01-intro}
 \input{src/ch02-preliminaries}
 \input{src/ch03-related}
-\input{src/ch04-phr}
+\input{src/ch04_1-pathtracer}
+\input{src/ch04_2-phr}
+\input{src/ch04_3-parameters}
 \input{src/ch05-results}
 \input{src/ch06-discussion}
 \input{src/ch07-conclusion}
-\input{src/ch08-terminology.tex}
+\cleardoublepage
+\printglossaries
+\cleardoublepage
 \input{literatures/bib.tex}
 \end{document}
